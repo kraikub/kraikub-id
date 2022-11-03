@@ -1,11 +1,25 @@
-import { Box, Button, Grid, Stack, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonBase,
+  Collapse,
+  Drawer,
+  Fade,
+  Grid,
+  IconButton,
+  Stack,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { useRouter } from "next/router";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect, useRef, useState } from "react";
 import { appbarConfig } from "../config/appbar_config";
 import { MdAccountCircle } from "react-icons/md";
 import { BiLockAlt } from "react-icons/bi";
-import { Container, fontSize, padding } from "@mui/system";
+import { Container } from "@mui/system";
 import { AiOutlineScan } from "react-icons/ai";
+import { IoIosArrowBack } from "react-icons/io";
+
 type Menu = {
   text: string;
   href: string;
@@ -35,7 +49,9 @@ const menus: Menu[] = [
 
 const gridButtonStyles = {
   display: "flex",
+  justifyContent: "center",
   alignItems: "center",
+  height: "50px",
 };
 
 const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
@@ -65,12 +81,20 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
           sx={{
             ...gridButtonStyles,
             fontSize: iconSize || "30px",
-            justifyContent: "center",
           }}
         >
           {icon}
         </Grid>
-        <Grid item xs={10} sx={{ ...gridButtonStyles, pl: "20px" }}>
+        <Grid
+          item
+          xs={10}
+          sx={{
+            ...gridButtonStyles,
+            pl: "20px",
+            textAlign: "start",
+            justifyContent: "start",
+          }}
+        >
           {text}
         </Grid>
       </Grid>
@@ -85,6 +109,32 @@ interface AppBarProps {
 export const AppBar: FC<AppBarProps> = ({ children }) => {
   const theme = useTheme();
   const router = useRouter();
+  const scrollRef = useRef<number>(0);
+  const [showBottomNav, setShowBottomNav] = useState<boolean>(false);
+  const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY === scrollRef.current) {
+          return;
+        }
+        if (window.scrollY > scrollRef.current) {
+          // downscroll code
+          setShowBottomNav(false);
+        } else {
+          // upscroll code
+          setShowBottomNav(true);
+        }
+        scrollRef.current = window.scrollY;
+      },
+      false
+    );
+  }, []);
+
+  console.log(showBottomNav);
+
   return (
     <Box>
       <Box
@@ -169,62 +219,96 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       >
         <Container>{children}</Container>
       </Box>
-      <Box
-        sx={{
-          display: {
-            xs: "block",
-            sm: "block",
-            md: "none",
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            backgroundColor: `${theme.palette.background.default}e0`,
-            zIndex: 35,
-            backdropFilter: "blur(30px)",
-            px: "20px",
-            border: "solid",
-            borderColor: "#ffffff20",
-            borderWidth: "1px 0 0 0",
+      <Fade in={showBottomNav}>
+        <Box
+          sx={{
+            display: {
+              xs: "block",
+              sm: "block",
+              md: "none",
+              position: "fixed",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              backgroundColor: theme.palette.background.default,
+              zIndex: 35,
+              backdropFilter: "blur(30px)",
+              px: "20px",
+              border: "solid",
+              borderColor: "#ffffff20",
+              borderWidth: "1px 0 0 0",
+            },
+          }}
+        >
+          <Grid
+            container
+            sx={{
+              overflow: "visible",
+            }}
+          >
+            <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
+            <Grid item xs={4} sx={{ ...gridButtonStyles }}>
+              <IconButton
+                size="large"
+                sx={{
+                  borderWidth: "3px",
+                  borderColor: theme.palette.background.default,
+                  borderStyle: "solid",
+                  backgroundColor: theme.palette.primary.main,
+                  color: theme.palette.primary.contrastText,
+                  transform: "translateY(-10px)",
+                  "&:hover": {
+                    backgroundColor: theme.palette.primary.main,
+                  },
+                  "&:focus": {
+                    backgroundColor: theme.palette.primary.main,
+                  },
+                  "&:active": {
+                    backgroundColor: theme.palette.primary.main,
+                  },
+                }}
+              >
+                <AiOutlineScan />
+              </IconButton>
+            </Grid>
+            <Grid item xs={4} sx={{ ...gridButtonStyles }}>
+              <IconButton onClick={() => setOpenMenuModal(true)}>
+                <MdAccountCircle />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Box>
+      </Fade>
+      <Drawer
+        anchor="right"
+        open={openMenuModal}
+        PaperProps={{
+          sx: {
+            width: "100vw",
+            backgroundColor: theme.palette.background.default,
+            backgroundImage: "none",
           },
         }}
+        onClose={() => setOpenMenuModal(false)}
       >
-        <Grid container>
-          {menus.map((menu, index) => {
-            return (
-              <Grid
-                item
-                xs={12 / menus.length}
-                key={`bottom-nav-menu-${index}`}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  py: "10px",
-                  fontSize: menu.iconSize || "24px",
-                  cursor: "pointer",
-                }}
-                onClick={() => router.push(menu.href)}
-                
-              >
-                <Box
-                  sx={{
-                    textAlign: "center",
-                  }}
-                >
-                  {menu.icon}
-                  <Typography
-                    sx={{
-                      fontSize: 12,
-                      fontWeight: 500,
-                    }}
-                  >{menu.text}</Typography>
-                </Box>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Box>
+        <Box
+          sx={{
+            py: "20px",
+            px: "10px",
+          }}
+        >
+          <IconButton color="primary" onClick={() => setOpenMenuModal(false)}>
+            <IoIosArrowBack />
+          </IconButton>
+        </Box>
+        <Container>
+          <Stack>
+            {menus.map((menu, index) => {
+              return <Menu key={`menu-${menu.text}-${index}`} {...menu} />;
+            })}
+          </Stack>
+        </Container>
+      </Drawer>
     </Box>
   );
 };

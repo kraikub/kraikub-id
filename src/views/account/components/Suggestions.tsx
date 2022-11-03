@@ -22,19 +22,6 @@ export const Suggestions: FC = () => {
     setHide(!hide);
   };
 
-  const shouldHide = () => {
-    if (window.innerWidth < theme.breakpoints.values.md) {
-      setHide(true);
-    } else {
-      setHide(false);
-    }
-  };
-
-  useEffect(() => {
-    shouldHide();
-    window.addEventListener("resize", shouldHide);
-  }, []);
-
   return (
     <Box
       sx={{
