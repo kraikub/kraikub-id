@@ -24,12 +24,12 @@ export const darkTheme = createTheme({
       paper: "#181818",
     },
     text: {
-      primary: "#ffffff",
+      primary: "#ffffffe0",
     },
     divider: "#292929",
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: 14,
   },
   typography: {
     fontFamily: `'Inter','Kanit', sans-serif`,
@@ -54,6 +54,7 @@ export const darkTheme = createTheme({
     },
     body1: {
       fontWeight: 300,
+      fontSize: 16,
     },
     body2: {
       fontWeight: 300,

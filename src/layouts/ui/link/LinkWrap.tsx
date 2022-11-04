@@ -13,7 +13,7 @@ export const LinkWrap: FC<LinkWrapProps> = ({ href, children }) => {
 
   return (
     <Link href={href}>
-      <a>{children}</a>
+      {children}
     </Link>
   );
 };

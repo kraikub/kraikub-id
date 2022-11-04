@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Typography, useTheme } from "@mui/material";
 import { FC, ReactNode } from "react";
 
 interface OutlineBadgeProps {
@@ -12,13 +12,10 @@ interface OutlineBadgeProps {
 export const OutlineBadge: FC<OutlineBadgeProps> = (props) => {
   const theme = useTheme();
   return (
-    <Box
+    <Paper
+      elevation={1}
       sx={{
         color: theme.palette.text.primary,
-        borderRadius: "10px",
-        borderStyle: "solid",
-        borderWidth: "1px",
-        borderColor: props.color || theme.palette.divider,
         display: "flex",
         alignItems: "center",
         px: "10px",
@@ -55,6 +52,6 @@ export const OutlineBadge: FC<OutlineBadgeProps> = (props) => {
           {props.textEn}
         </Typography>
       </Box>
-    </Box>
+    </Paper>
   );
 };

@@ -12,9 +12,7 @@ export const GroupCardBase: FC<GroupCardBaseProps> = ({children, title}) => {
       py: "30px",
       px: "18px",
     }}>
-    <Typography variant="h6" fontSize={16} sx={{
-      opacity: 0.8,
-    }}>{title}</Typography>
+    <Typography variant="h6" fontSize={16}>{title}</Typography>
     <Divider sx={{
       my: 2,
       opacity: 0.5,

@@ -25,7 +25,7 @@ export const AccountPage: NextPage = () => {
           my: 4
         }}>
           <General />
-          <Menu text="ยืนยันอีเมลมหาวิทยาลัย" mark="important"/>
+          <Menu text="ยืนยันอีเมลมหาวิทยาลัย" mark="important" href="/verify/university-email"/>
           <UseSuggestionEmail suggestedEmail="beamuonly@gmail.com" />
           <Education />
           <AppActivities />

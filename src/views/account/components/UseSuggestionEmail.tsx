@@ -40,17 +40,17 @@ export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
           {" "}
           {suggestedEmail}{" "}
         </Typography>
-        เป็นอีเมลสำรองของคุณหรือไม่
+        เป็นอีเมลสำรองของคุณหรือไม่?
       </Typography>
     </>
   );
 
   const choice = [
     {
-      text: "ไม่, ใช้อีเมลอื่น",
+      text: "ไม่ , ฉันใช้อีเมลอื่น",
     },
     {
-      text: "ใช่",
+      text: "ตกลง",
     },
   ]
 

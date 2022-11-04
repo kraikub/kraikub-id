@@ -1,0 +1,1 @@
+export { VerifyUniversityEmail as default } from "../../src/views/verify/university-email";
