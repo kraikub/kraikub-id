@@ -2,6 +2,7 @@ import {
   Box,
   IconButton,
   InputBase,
+  InputBaseProps,
   Paper,
   Stack,
   useTheme,
@@ -11,6 +12,7 @@ import { IoIosClose } from "react-icons/io";
 
 interface InputProps {
   icon?: ReactNode;
+  inputProps?: InputBaseProps;
 }
 
 export const Input: FC<InputProps> = (props) => {
@@ -54,13 +56,18 @@ export const Input: FC<InputProps> = (props) => {
             fontWeight: 500,
             color: theme.palette.text.primary,
           }}
+          {...props.inputProps}
         />
       </Stack>
       <Box>
         <IconButton
+          disableRipple
+          disableFocusRipple
           size="small"
           sx={{
+            p: "1px",
             backgroundColor: theme.palette.divider,
+            fontSize: 24,
           }}
         >
           <IoIosClose />

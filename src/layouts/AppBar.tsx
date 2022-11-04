@@ -3,10 +3,12 @@ import {
   Button,
   ButtonBase,
   Collapse,
+  Divider,
   Drawer,
   Fade,
   Grid,
   IconButton,
+  Paper,
   Stack,
   Typography,
   useTheme,
@@ -73,7 +75,7 @@ const gridButtonStyles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  height: "50px",
+  height: "60px",
 };
 
 const groups = [
@@ -147,17 +149,25 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
   const theme = useTheme();
   const router = useRouter();
   const scrollRef = useRef<number>(0);
+  const dimensionY = useRef<number>(0);
   const [showBottomNav, setShowBottomNav] = useState<boolean>(false);
   const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
 
   useEffect(() => {
+    dimensionY.current = window.innerHeight;
     window.addEventListener(
       "scroll",
       () => {
         if (window.scrollY === scrollRef.current) {
           return;
         }
-        if (window.scrollY >= scrollRef.current) {
+        if (window.scrollY < 0) {
+          return setShowBottomNav(true);
+        }
+        if (
+          window.scrollY > scrollRef.current ||
+          window.screenY >= dimensionY.current
+        ) {
           // downscroll code
           setShowBottomNav(false);
         } else {
@@ -165,6 +175,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           setShowBottomNav(true);
         }
         scrollRef.current = window.scrollY;
+        console.log(scrollRef.current)
       },
       false
     );
@@ -271,10 +282,17 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           },
         }}
       >
-        <Container>{children}</Container>
+        <Container
+          sx={{
+            pb: "100px",
+          }}
+        >
+          {children}
+        </Container>
       </Box>
       <Fade in={showBottomNav}>
-        <Box
+        <Paper
+          elevation={1}
           sx={{
             display: {
               xs: "block",
@@ -282,18 +300,28 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               md: "none",
               position: "fixed",
               bottom: 0,
-              left: 0,
-              right: 0,
-              backgroundColor: theme.palette.background.default,
+              left: "5px",
+              right: "5px",
               zIndex: 35,
+              backgroundColor: `${theme.palette.background.paper}10`,
+              borderRadius: "20px 20px 0 0",
               backdropFilter: "blur(30px)",
               px: "20px",
-              border: "solid",
-              borderColor: "#ffffff20",
-              borderWidth: "1px 0 0 0",
             },
           }}
         >
+          <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            pt: 1
+          }}>
+            <Box sx={{
+              minHeight: "3px",
+              width: "40px",
+              backgroundColor: theme.palette.text.secondary,
+              borderRadius: "100px",
+            }}></Box>
+          </Box>
           <Grid
             container
             sx={{
@@ -301,20 +329,29 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             }}
           >
             <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
-            <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
+            <Grid item xs={4} sx={{ ...gridButtonStyles }}>
+              <IconButton
+                sx={{
+                  fontSize: 28,
+                  color: theme.palette.text.primary,
+                }}
+              >
+                <AiOutlineScan />
+              </IconButton>
+            </Grid>
             <Grid item xs={4} sx={{ ...gridButtonStyles }}>
               <IconButton
                 onClick={() => setOpenMenuModal(true)}
                 sx={{
                   fontSize: 20,
-                  color: theme.palette.text.secondary,
+                  color: theme.palette.text.primary,
                 }}
               >
                 <FiMenu />
               </IconButton>
             </Grid>
           </Grid>
-        </Box>
+        </Paper>
       </Fade>
       <Drawer
         anchor="right"

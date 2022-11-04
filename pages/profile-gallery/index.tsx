@@ -1,0 +1,1 @@
+export { ProfileGallery as default } from "../../src/views/profile-gallery";

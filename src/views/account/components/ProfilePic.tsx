@@ -22,7 +22,7 @@ export const ProfilePic = () => {
               sm: "400px",
               md: "310px",
             },
-            backgroundImage: `url(https://i.ytimg.com/vi/FmbqFZmH-l8/maxresdefault.jpg)`,
+            backgroundImage: `url(/profiles/girl-007.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             borderRadius: "12px",
