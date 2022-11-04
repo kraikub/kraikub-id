@@ -60,13 +60,13 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
     <Button
       disableRipple
       variant="contained"
-      size="large"
       sx={{
         backgroundColor: router.pathname === href ? "#ffffff10" : "transparent",
         fontSize: 14,
         paddingX: "10px",
         textAlign: "start",
         alignItems: "center",
+        height: "54px",
         color: router.pathname === href ? "#ffffff" : "#ffffffd0",
         "&:hover": {
           backgroundColor: "#ffffff10",
@@ -132,8 +132,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       false
     );
   }, []);
-
-  console.log(showBottomNav);
 
   return (
     <Box>

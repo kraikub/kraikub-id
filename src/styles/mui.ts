@@ -13,8 +13,11 @@ export const darkTheme = createTheme({
     },
     background: {
       default: "#0f0f0f",
-      paper: "#131313"
-    }
+      paper: "#101010",
+    },
+    text: {
+      primary: "#ffffff",
+    },
   },
   shape: {
     borderRadius: 8,
@@ -46,7 +49,7 @@ export const darkTheme = createTheme({
     body2: {
       fontWeight: 300,
       fontSize: 14,
-      color: "#696969"
+      color: "#696969",
     },
     button: {
       fontSize: 14,
@@ -64,8 +67,15 @@ export const darkTheme = createTheme({
       styleOverrides: {
         root: {
           textDecoration: "none",
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
         }
       }
-    },
+    }
   },
 });
