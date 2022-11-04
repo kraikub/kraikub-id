@@ -16,8 +16,9 @@ import { FC, ReactNode, useEffect, useRef, useState } from "react";
 import { appbarConfig } from "../config/appbar_config";
 import { MdAccountCircle } from "react-icons/md";
 import { BiLockAlt } from "react-icons/bi";
+import { BsImage } from "react-icons/bs";
 import { Container } from "@mui/system";
-import { AiOutlineScan } from "react-icons/ai";
+import { AiOutlineScan, AiOutlineHistory } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 
@@ -28,7 +29,7 @@ type Menu = {
   iconSize?: string;
 };
 
-const menus: Menu[] = [
+const mainMenus: Menu[] = [
   {
     text: "บัญชีของคุณ",
     href: "/account",
@@ -48,6 +49,26 @@ const menus: Menu[] = [
   },
 ];
 
+const shortcuts: Menu[] = [
+  {
+    text: "Profile Gallery",
+    href: "/profile-gallery",
+    icon: <BsImage />,
+  },
+  {
+    text: "กิจกรรมการเข้าสู่ระบบ",
+    href: "/oauth2-activities",
+    icon: <AiOutlineHistory />,
+    iconSize: "20px",
+  },
+  {
+    text: "Student Scan",
+    href: "/whois",
+    icon: <AiOutlineScan />,
+    iconSize: "20px",
+  },
+];
+
 const gridButtonStyles = {
   display: "flex",
   justifyContent: "center",
@@ -55,15 +76,29 @@ const gridButtonStyles = {
   height: "50px",
 };
 
+const groups = [
+  {
+    name: "หน้าหลัก",
+    list: mainMenus,
+  },
+  {
+    name: "ทางลัด",
+    list: shortcuts,
+  },
+];
+
 const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
-  const theme =  useTheme()
+  const theme = useTheme();
   const router = useRouter();
   return (
     <Button
       disableRipple
       variant="contained"
       sx={{
-        backgroundColor: router.pathname === href ? theme.palette.background.paper : "transparent",
+        backgroundColor:
+          router.pathname === href
+            ? theme.palette.background.paper
+            : "transparent",
         fontSize: 14,
         paddingX: "10px",
         textAlign: "start",
@@ -79,7 +114,7 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
       <Grid container>
         <Grid
           item
-          xs={2}
+          xs={1}
           sx={{
             ...gridButtonStyles,
             fontSize: iconSize || "20px",
@@ -89,7 +124,7 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
         </Grid>
         <Grid
           item
-          xs={10}
+          xs={11}
           sx={{
             ...gridButtonStyles,
             pl: "20px",
@@ -201,9 +236,28 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           },
         }}
       >
-        <Stack>
-          {menus.map((menu, index) => {
-            return <Menu key={`menu-${menu.text}-${index}`} {...menu} />;
+        <Stack spacing={4}>
+          {groups.map((g, index) => {
+            return (
+              <Box key={`menu-group-${index}`}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: 12,
+                    fontWeight: 500,
+                  }}
+                >
+                  {g.name}
+                </Typography>
+                <Stack mt={1}>
+                  {g.list.map((menu, index) => {
+                    return (
+                      <Menu key={`menu-${menu.text}-${index}`} {...menu} />
+                    );
+                  })}
+                </Stack>
+              </Box>
+            );
           })}
         </Stack>
       </Box>
@@ -247,13 +301,15 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             }}
           >
             <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
+            <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
             <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-            </Grid>
-            <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-              <IconButton onClick={() => setOpenMenuModal(true)} sx={{
-                fontSize: 20,
-                color: theme.palette.text.secondary
-              }}>
+              <IconButton
+                onClick={() => setOpenMenuModal(true)}
+                sx={{
+                  fontSize: 20,
+                  color: theme.palette.text.secondary,
+                }}
+              >
                 <FiMenu />
               </IconButton>
             </Grid>
@@ -278,17 +334,43 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             px: "10px",
           }}
         >
-          <Button color="primary" onClick={() => setOpenMenuModal(false)} variant="text" sx={{
-            fontSize: 18
-          }}>
+          <Button
+            color="primary"
+            onClick={() => setOpenMenuModal(false)}
+            variant="text"
+            sx={{
+              fontSize: 18,
+            }}
+          >
             <IoIosArrowBack /> Back
           </Button>
         </Box>
         <Container>
           <Stack>
-            {menus.map((menu, index) => {
-              return <Menu key={`menu-${menu.text}-${index}`} {...menu} />;
-            })}
+            <Stack spacing={4}>
+              {groups.map((g, index) => {
+                return (
+                  <Box key={`menu-group-${index}`}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: 12,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {g.name}
+                    </Typography>
+                    <Stack mt={1}>
+                      {g.list.map((menu, index) => {
+                        return (
+                          <Menu key={`menu-${menu.text}-${index}`} {...menu} />
+                        );
+                      })}
+                    </Stack>
+                  </Box>
+                );
+              })}
+            </Stack>
           </Stack>
         </Container>
       </Drawer>

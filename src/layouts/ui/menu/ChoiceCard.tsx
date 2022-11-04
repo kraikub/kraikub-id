@@ -75,11 +75,11 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "start",
-                  minHeight: "40px",
+                  minHeight: "44px",
                 }}>
                   <Typography
                     sx={{
-                      fontSize: 14,
+                      fontSize: 16,
                       color: theme.palette.info.main,
                     }}
                   >
