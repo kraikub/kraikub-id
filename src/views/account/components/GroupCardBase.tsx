@@ -9,7 +9,6 @@ interface GroupCardBaseProps {
 export const GroupCardBase: FC<GroupCardBaseProps> = ({children, title}) => {
   return (
     <Paper sx={{
-      my: "20px",
       py: "30px",
       px: "18px",
     }}>

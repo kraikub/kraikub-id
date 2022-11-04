@@ -28,7 +28,7 @@ export const General = () => {
             textTh="นิสิตปัจจุบัน"
             icon={<BiBook />}
             iconSize="24px"
-            color={theme.palette.success.main}
+            // color={theme.palette.success.main}
           />
         </Grid>
         <Grid item xs={12} sm={6} lg={4}>
@@ -37,7 +37,7 @@ export const General = () => {
             textTh="ยังไม่ยืนยันอีเมลมหาวิทยาลัย"
             icon={<MdOutlineMailOutline />}
             iconSize="24px"
-            color={theme.palette.error.main}
+            // color={theme.palette.error.main}
           />
         </Grid>
         <Grid item xs={12} sm={6} lg={4}>
@@ -46,7 +46,7 @@ export const General = () => {
             textTh="ยังไม่ยืนยันอีเมลสำรอง"
             icon={<BiBook />}
             iconSize="24px"
-            color={theme.palette.error.main}
+            // color={theme.palette.error.main}
           />
         </Grid>
       </Grid>

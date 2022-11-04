@@ -9,12 +9,6 @@ import {
 } from "@mui/material";
 import { FC, ReactNode } from "react";
 
-interface Choice {
-  onClick?: () => void;
-  text: string;
-  href?: string;
-}
-
 interface ChoiceCardProps {
   title: string;
   description: ReactNode | string;
@@ -24,10 +18,12 @@ interface ChoiceCardProps {
 export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
   const theme = useTheme();
   return (
-    <Paper>
+    <Paper sx={{
+      overflow: "hidden"
+    }}>
       <Box
         sx={{
-          p: "14px",
+          p: "18px",
         }}
       >
         <Typography
@@ -38,7 +34,7 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
             mb: 2,
           }}
         >
-          ยืนยันอีเมลสำรอง
+          {props.title}
         </Typography>
         {typeof props.description === "string" ? (
           <Typography
@@ -55,30 +51,41 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
       </Box>
       <Box
         sx={{
-          pt: "14px",
+          pt: "18px",
         }}
       >
         {props.choice?.map((c, index) => {
           return (
             <Box key={`${props.title}-${index}`}>
-              <Divider
+              <ButtonBase
                 sx={{
-                  ml: "14px",
+                  py: 0,
+                  pl: "18px",
+                  width: "100%",
+                  "&:hover": {
+                    backgroundColor: theme.palette.divider,
+                  },
+                  display: "block",
                 }}
-              />
-              <ButtonBase sx={{
-                px: "14px",
-                minHeight: "40px",
-                width: "100%",
-                justifyContent: "start",
-                "&:hover": {
-                  backgroundColor: theme.palette.divider,
-                }
-              }}>
-                <Typography sx={{
-                  fontSize: 14,
-                  color: theme.palette.info.main
-                }}>{c.text}</Typography>
+              >
+                <Box sx={{
+                  borderStyle: "solid",
+                  borderWidth: "1px 0 0 0",
+                  borderColor: theme.palette.divider,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "start",
+                  minHeight: "40px",
+                }}>
+                  <Typography
+                    sx={{
+                      fontSize: 14,
+                      color: theme.palette.info.main,
+                    }}
+                  >
+                    {c.text}
+                  </Typography>
+                </Box>
               </ButtonBase>
             </Box>
           );

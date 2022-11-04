@@ -11,13 +11,22 @@ export const darkTheme = createTheme({
       main: "#ffffff10",
       contrastText: "#ffffff",
     },
+    info: {
+      main: "#307cff",
+      contrastText: "#ffffff",
+    },
+    error: {
+      main: "#ff3c2e",
+      contrastText: "#ffffff",
+    },
     background: {
-      default: "#0f0f0f",
-      paper: "#101010",
+      default: "#000000",
+      paper: "#141414",
     },
     text: {
       primary: "#ffffff",
     },
+    divider: "#292929",
   },
   shape: {
     borderRadius: 8,
@@ -71,11 +80,14 @@ export const darkTheme = createTheme({
       },
     },
     MuiPaper: {
+      defaultProps: {
+        elevation: 0,
+      },
       styleOverrides: {
         root: {
           boxShadow: "none",
-        }
-      }
-    }
+        },
+      },
+    },
   },
 });

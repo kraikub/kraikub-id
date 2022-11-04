@@ -19,6 +19,7 @@ import { BiLockAlt } from "react-icons/bi";
 import { Container } from "@mui/system";
 import { AiOutlineScan } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
+import { FiMenu } from "react-icons/fi";
 
 type Menu = {
   text: string;
@@ -37,13 +38,13 @@ const menus: Menu[] = [
     text: "ความปลอดภัย",
     href: "/security",
     icon: <BiLockAlt />,
-    iconSize: "24px",
+    iconSize: "20px",
   },
   {
     text: "Student Scan",
     href: "/whois",
     icon: <AiOutlineScan />,
-    iconSize: "24px",
+    iconSize: "20px",
   },
 ];
 
@@ -55,21 +56,22 @@ const gridButtonStyles = {
 };
 
 const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
+  const theme =  useTheme()
   const router = useRouter();
   return (
     <Button
       disableRipple
       variant="contained"
       sx={{
-        backgroundColor: router.pathname === href ? "#ffffff10" : "transparent",
+        backgroundColor: router.pathname === href ? theme.palette.background.paper : "transparent",
         fontSize: 14,
         paddingX: "10px",
         textAlign: "start",
         alignItems: "center",
-        height: "54px",
+        height: "50px",
         color: router.pathname === href ? "#ffffff" : "#ffffffd0",
         "&:hover": {
-          backgroundColor: "#ffffff10",
+          backgroundColor: theme.palette.background.paper,
         },
       }}
       onClick={() => router.push(href)}
@@ -80,7 +82,7 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
           xs={2}
           sx={{
             ...gridButtonStyles,
-            fontSize: iconSize || "30px",
+            fontSize: iconSize || "20px",
           }}
         >
           {icon}
@@ -120,7 +122,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
         if (window.scrollY === scrollRef.current) {
           return;
         }
-        if (window.scrollY > scrollRef.current) {
+        if (window.scrollY >= scrollRef.current) {
           // downscroll code
           setShowBottomNav(false);
         } else {
@@ -246,32 +248,13 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           >
             <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
             <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-              <IconButton
-                size="large"
-                sx={{
-                  borderWidth: "3px",
-                  borderColor: theme.palette.background.default,
-                  borderStyle: "solid",
-                  backgroundColor: theme.palette.primary.main,
-                  color: theme.palette.primary.contrastText,
-                  transform: "translateY(-10px)",
-                  "&:hover": {
-                    backgroundColor: theme.palette.primary.main,
-                  },
-                  "&:focus": {
-                    backgroundColor: theme.palette.primary.main,
-                  },
-                  "&:active": {
-                    backgroundColor: theme.palette.primary.main,
-                  },
-                }}
-              >
-                <AiOutlineScan />
-              </IconButton>
             </Grid>
             <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-              <IconButton onClick={() => setOpenMenuModal(true)}>
-                <MdAccountCircle />
+              <IconButton onClick={() => setOpenMenuModal(true)} sx={{
+                fontSize: 20,
+                color: theme.palette.text.secondary
+              }}>
+                <FiMenu />
               </IconButton>
             </Grid>
           </Grid>
@@ -295,9 +278,11 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             px: "10px",
           }}
         >
-          <IconButton color="primary" onClick={() => setOpenMenuModal(false)}>
-            <IoIosArrowBack />
-          </IconButton>
+          <Button color="primary" onClick={() => setOpenMenuModal(false)} variant="text" sx={{
+            fontSize: 18
+          }}>
+            <IoIosArrowBack /> Back
+          </Button>
         </Box>
         <Container>
           <Stack>

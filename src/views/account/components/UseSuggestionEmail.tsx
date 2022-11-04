@@ -8,7 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
-import { ChoiceCard } from "../../../layouts/ChoiceCard";
+import { ChoiceCard } from "../../../layouts/ui/menu/ChoiceCard";
 
 interface UseSuggestionEmailProps {
   suggestedEmail: string;

@@ -11,7 +11,6 @@ interface OutlineBadgeProps {
 
 export const OutlineBadge: FC<OutlineBadgeProps> = (props) => {
   const theme = useTheme();
-  console.log(theme.palette.text.primary);
   return (
     <Box
       sx={{
