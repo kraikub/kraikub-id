@@ -1,4 +1,5 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, Theme, ThemeProvider } from "@mui/material";
+import Head from "next/head";
 import { createContext, useContext, useState } from "react";
 import { darkTheme } from "../styles/mui/kraikubid-dark";
 import { lightTheme } from "../styles/mui/kraikubid-light";
@@ -21,6 +22,10 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
     setTheme(t);
   }
 
+  function useBackgroundTheme(t: Theme): string {
+    return t.palette.background.default;
+  }
+
   return (
     <ThemeContext.Provider
       value={{
@@ -28,11 +33,22 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
         changeTheme,
       }}
     >
-      <ThemeProvider theme={theme === "light" ? lightTheme: darkTheme}>
-      <CssBaseline />
-      {children}</ThemeProvider>
+      <Head>
+        <meta
+          name="theme-color"
+          content={
+            theme === "light"
+              ? useBackgroundTheme(lightTheme)
+              : useBackgroundTheme(darkTheme)
+          }
+        />
+      </Head>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </ThemeContext.Provider>
   );
 }
 
-export const useAppTheme = () => useContext(ThemeContext)
+export const useAppTheme = () => useContext(ThemeContext);

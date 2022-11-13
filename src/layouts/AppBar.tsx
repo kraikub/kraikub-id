@@ -1,8 +1,6 @@
 import {
   Box,
   Button,
-  ButtonBase,
-  Collapse,
   Divider,
   Drawer,
   Fade,
@@ -24,7 +22,6 @@ import { AiOutlineScan, AiOutlineHistory } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
-import Head from "next/head";
 
 type Menu = {
   text: string;
@@ -188,9 +185,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
 
   return (
     <Box>
-      <Head>
-        <meta name="theme-color" content={theme.palette.background.default} />
-      </Head>
       <Box
         sx={{
           position: {
