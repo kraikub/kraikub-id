@@ -13,7 +13,7 @@ export const OutlineBadge: FC<OutlineBadgeProps> = (props) => {
   const theme = useTheme();
   return (
     <Paper
-      elevation={1}
+      elevation={0}
       sx={{
         color: theme.palette.text.primary,
         display: "flex",

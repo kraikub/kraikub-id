@@ -19,7 +19,8 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
   const theme = useTheme();
   return (
     <Paper sx={{
-      overflow: "hidden"
+      overflow: "hidden",
+      padding: 0,
     }}>
       <Box
         sx={{

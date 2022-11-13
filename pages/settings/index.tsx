@@ -1,0 +1,1 @@
+export { SettingPage as default } from "../../src/views/settings";

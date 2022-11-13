@@ -23,6 +23,7 @@ import { Container } from "@mui/system";
 import { AiOutlineScan, AiOutlineHistory } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
+import { IoSettingsOutline } from "react-icons/io5";
 
 type Menu = {
   text: string;
@@ -64,9 +65,9 @@ const shortcuts: Menu[] = [
     iconSize: "20px",
   },
   {
-    text: "Student Scan",
-    href: "/whois",
-    icon: <AiOutlineScan />,
+    text: "ตั้งค่า",
+    href: "/settings",
+    icon: <IoSettingsOutline />,
     iconSize: "20px",
   },
 ];
@@ -106,7 +107,10 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
         textAlign: "start",
         alignItems: "center",
         height: "50px",
-        color: router.pathname === href ? "#ffffff" : "#ffffffd0",
+        color:
+          router.pathname === href
+            ? theme.palette.text.primary
+            : theme.palette.text.secondary,
         "&:hover": {
           backgroundColor: theme.palette.background.paper,
         },
@@ -150,7 +154,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
   const router = useRouter();
   const scrollRef = useRef<number>(0);
   const dimensionY = useRef<number>(0);
-  const [showBottomNav, setShowBottomNav] = useState<boolean>(false);
+  const [showBottomNav, setShowBottomNav] = useState<boolean>(true);
   const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -175,7 +179,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           setShowBottomNav(true);
         }
         scrollRef.current = window.scrollY;
-        console.log(scrollRef.current)
+        console.log(scrollRef.current);
       },
       false
     );
@@ -218,7 +222,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               justifyContent: "center",
               alignItems: "center",
               border: "1px solid",
-              borderColor: "#ffffffa0",
+              borderColor: theme.palette.text.primary,
               fontSize: 14,
               fontWeight: 600,
               width: "24px",
@@ -292,36 +296,22 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       </Box>
       <Fade in={showBottomNav}>
         <Paper
-          elevation={1}
           sx={{
             display: {
               xs: "block",
               sm: "block",
               md: "none",
-              position: "fixed",
-              bottom: 0,
-              left: "5px",
-              right: "5px",
-              zIndex: 35,
-              backgroundColor: `${theme.palette.background.paper}10`,
-              borderRadius: "20px 20px 0 0",
-              backdropFilter: "blur(30px)",
-              px: "20px",
             },
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 35,
+            backgroundColor: theme.palette.background.default,
+            p: 0,
           }}
         >
-          <Box sx={{
-            display: "flex",
-            justifyContent: "center",
-            pt: 1
-          }}>
-            <Box sx={{
-              minHeight: "3px",
-              width: "40px",
-              backgroundColor: theme.palette.text.secondary,
-              borderRadius: "100px",
-            }}></Box>
-          </Box>
+          <Divider />
           <Grid
             container
             sx={{

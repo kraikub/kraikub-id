@@ -82,7 +82,6 @@ export const ProfileGallery: NextPage = () => {
                     href={g.credit.link}
                     sx={{
                       fontSize: 10,
-                      opacity: 0.6,
                     }}
                   >
                     {g.credit.text}
