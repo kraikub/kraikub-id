@@ -24,6 +24,7 @@ import { AiOutlineScan, AiOutlineHistory } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
+import Head from "next/head";
 
 type Menu = {
   text: string;
@@ -187,6 +188,9 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
 
   return (
     <Box>
+      <Head>
+        <meta name="theme-color" content={theme.palette.background.default} />
+      </Head>
       <Box
         sx={{
           position: {
@@ -243,6 +247,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           zIndex: 32,
           width: appbarConfig.sizebar.width,
           height: appbarConfig.sizebar.height,
+          backgroundColor: theme.palette.background.default,
           pl: "20px",
           display: {
             xs: "none",
@@ -278,7 +283,9 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       </Box>
       <Box
         sx={{
-          mt: appbarConfig.navbar.height,
+          backgroundColor: theme.palette.background.default,
+          pt: appbarConfig.navbar.height,
+          minHeight: "100vh",
           ml: {
             xs: 0,
             sm: 0,
@@ -295,8 +302,9 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
         </Container>
       </Box>
       <Fade in={showBottomNav}>
-        <Paper
+        <Box
           sx={{
+            backgroundColor: "#000",
             display: {
               xs: "block",
               sm: "block",
@@ -307,41 +315,47 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             left: 0,
             right: 0,
             zIndex: 35,
-            backgroundColor: theme.palette.background.default,
-            p: 0,
           }}
         >
-          <Divider />
-          <Grid
-            container
+          <Paper
             sx={{
-              overflow: "visible",
+              backgroundColor: theme.palette.background.default,
+              p: 0,
+              borderRadius: "0 0 20px 20px",
             }}
           >
-            <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
-            <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-              <IconButton
-                sx={{
-                  fontSize: 28,
-                  color: theme.palette.text.primary,
-                }}
-              >
-                <AiOutlineScan />
-              </IconButton>
+            <Divider />
+            <Grid
+              container
+              sx={{
+                overflow: "visible",
+              }}
+            >
+              <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
+              <Grid item xs={4} sx={{ ...gridButtonStyles }}>
+                <IconButton
+                  sx={{
+                    fontSize: 28,
+                    color: theme.palette.text.primary,
+                  }}
+                >
+                  <AiOutlineScan />
+                </IconButton>
+              </Grid>
+              <Grid item xs={4} sx={{ ...gridButtonStyles }}>
+                <IconButton
+                  onClick={() => setOpenMenuModal(true)}
+                  sx={{
+                    fontSize: 20,
+                    color: theme.palette.text.primary,
+                  }}
+                >
+                  <FiMenu />
+                </IconButton>
+              </Grid>
             </Grid>
-            <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-              <IconButton
-                onClick={() => setOpenMenuModal(true)}
-                sx={{
-                  fontSize: 20,
-                  color: theme.palette.text.primary,
-                }}
-              >
-                <FiMenu />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </Paper>
+          </Paper>
+        </Box>
       </Fade>
       <Drawer
         anchor="right"

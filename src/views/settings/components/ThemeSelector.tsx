@@ -21,8 +21,7 @@ interface ThemePreviewProps {
 }
 
 const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
-
-  const { theme: current, changeTheme } = useAppTheme()
+  const { theme: current, changeTheme } = useAppTheme();
 
   return (
     <Stack alignItems="center" spacing={2}>
@@ -61,11 +60,17 @@ const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
           ></Box>
         </Box>
       </ThemeProvider>
-      <Typography fontSize={14} fontWeight={500}>{label}</Typography>
-      <Checkbox checked={current === value} color="info" onChange={(_, c) => {
-        if (!c) return
-        changeTheme(value)
-      }}/>
+      <Typography fontSize={14} fontWeight={500}>
+        {label}
+      </Typography>
+      <Checkbox
+        checked={current === value}
+        color="info"
+        onChange={(_, c) => {
+          if (!c) return;
+          changeTheme(value);
+        }}
+      />
     </Stack>
   );
 };
@@ -81,8 +86,8 @@ export const ThemeSelector = () => {
     <Paper>
       <Typography>เลือกโหมดการแสดงผล</Typography>
       <Stack direction="row" spacing={2} my={2}>
-        <ThemePreview theme={lightTheme} label="Light" value="light"/>
-        <ThemePreview theme={darkTheme} label="Dark" value="dark"/>
+        <ThemePreview theme={lightTheme} label="Light" value="light" />
+        <ThemePreview theme={darkTheme} label="Dark" value="dark" />
       </Stack>
     </Paper>
   );
