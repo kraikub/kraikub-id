@@ -8,7 +8,7 @@ export const lightTheme = createTheme({
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#f7f7f7",
+      main: "#e8eaf1",
       contrastText: "#000000",
     },
     info: {
@@ -20,8 +20,8 @@ export const lightTheme = createTheme({
       contrastText: "#ffffff",
     },
     background: {
-      default: "#ffffff",
-      paper: "#0000000c",
+      default: "#f5f6f7",
+      paper: "#ffffff",
     },
     text: {
       primary: "#1a1a1a",

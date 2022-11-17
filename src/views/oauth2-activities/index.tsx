@@ -65,6 +65,9 @@ export const OAuthActivities: NextPage = () => {
                   disableGutters
                   expanded={whichActive === index}
                   onChange={handleChange(index)}
+                  sx={{
+                    py: "4px",
+                  }}
                 >
                   <AccordionSummary
                     key={`oauth2-act-${index}`}
