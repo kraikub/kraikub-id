@@ -4,13 +4,13 @@ import { ChoiceCard } from "../../../layouts/ui/menu/ChoiceCard";
 export const UniversityEmail = () => {
   return (
     <ChoiceCard
-      title="อีเมลมหาวิทยาลัย"
+      title="UNIVERSITY EMAIL"
       description={
-        <Typography>คุณยังไม่ได้ยืนยันอีเมลมหาวิทยาลัย @ku.th</Typography>
+        <Typography>You have not verify your @ku.th email yet. </Typography>
       }
       choice={[
         {
-          text: "ยืนยันอีเมลมหาวิทยาลัย",
+          text: "Verify now",
         },
       ]}
     />

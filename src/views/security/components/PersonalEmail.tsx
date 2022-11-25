@@ -4,20 +4,20 @@ import { ChoiceCard } from "../../../layouts/ui/menu/ChoiceCard";
 export const PersonalEmail = () => {
   return (
     <ChoiceCard
-      title="อีเมลสส่วนตัว"
+      title="PERSONAL EMAIL"
       description={
-        <Stack spacing={2}>
+        <Stack spacing={1}>
           <Typography>
-            คุณยังไม่ได้ยืนยันอีเมลสส่วนตัว
+            You have not verify your personal email yet.
           </Typography>
           <Typography variant="body2">
-            ต้องไม่ใช้ @ku.th
+            Must not be @ku.th
           </Typography>
         </Stack>
       }
       choice={[
         {
-          text: "ยืนยันอีเมลสส่วนตัว",
+          text: "Verify now",
         },
       ]}
     />

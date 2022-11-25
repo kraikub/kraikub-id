@@ -4,24 +4,25 @@ import { ChoiceCard } from "../../../layouts/ui/menu/ChoiceCard";
 export const TwoFactor = () => {
   return (
     <ChoiceCard
-      title="Two Factor Authentication (2FA)"
+      title="TWO FACTOR AUTHENTICATION (2FA)"
       description={
-        <Stack spacing={2}>
+        <Stack spacing={1}>
           <Typography>
-            เปิดใช้งานระบบความปลอดภัยสองชั้นเพื่อป้องกันการเข้าสู่ระบบที่อาจไม่ปลอดภัยต่อบัญชีของคุณ
+            Enable 2FA to mostly secure your account from any malicious logins.
           </Typography>
           <Typography variant="body2">
-            ระบบความปลอดภัยสองชั้นจะส่งรหัสยืนยันไปที่<strong>อีเมลส่วนตัว</strong>ของคุณทุกครั้งที่มีการเข้าสู่ระบบด้วย
-            KU
+            We will send a sign in event details to your
+            <strong> PERSONAL EMAIL</strong> everytime your account is logged in
+            to any apps under Kraikub services.
           </Typography>
         </Stack>
       }
       choice={[
         {
-          text: "เปิดใช้งาน 2FA",
+          text: "Enable 2FA",
           onClick: () => {
-            alert("กรุณายืนยันอีเมลส่วนตัวของคุณ");
-          }
+            alert("Please verify your personal email before enabling 2FA.");
+          },
         },
       ]}
     />

@@ -6,7 +6,7 @@ interface KeyVauleFieldProps {
   value?: any;
 }
 
-export const KeyVauleField: FC<KeyVauleFieldProps> = ({ title, value }) => {
+export const KeyValueField: FC<KeyVauleFieldProps> = ({ title, value }) => {
   const theme = useTheme();
   return (
     <Grid

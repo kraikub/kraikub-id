@@ -27,7 +27,7 @@ export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
           color: theme.palette.text.primary,
         }}
       >
-        บัญชีของคุณยังไม่ได้ยืนยันอีเมลสำรอง ต้องการใช้
+        Your personal email was not set. Do you want to use
         <Typography
           component="span"
           color={theme.palette.info.main}
@@ -40,19 +40,19 @@ export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
           {" "}
           {suggestedEmail}{" "}
         </Typography>
-        เป็นอีเมลสำรองของคุณหรือไม่?
+        as your personal email?
       </Typography>
     </>
   );
 
   const choice = [
     {
-      text: "ไม่ , ฉันใช้อีเมลอื่น",
+      text: "No, I'll choose by own.",
     },
     {
-      text: "ตกลง",
+      text: "Yes",
     },
   ]
 
-  return <ChoiceCard title="ยืนยันอีเมลสำรอง" description={bodyText} choice={choice}/>;
+  return <ChoiceCard title="PERSONAL EMAIL" description={bodyText} choice={choice}/>;
 };

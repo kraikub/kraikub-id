@@ -3,7 +3,7 @@ import { GroupCardBase } from "./GroupCardBase";
 
 export const AppActivities = () => {
   return (
-    <GroupCardBase title="กิจกรรมการใช้งานแอป">
+    <GroupCardBase title="Activities">
       <Grid container>
         <Grid
           item

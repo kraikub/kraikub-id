@@ -38,8 +38,8 @@ export const Menu: FC<Menu> = (props) => {
       >
         <Typography
           sx={{
-            fontSize: 16,
-            fontWeight: 400,
+            fontSize: 14,
+            fontWeight: 500,
           }}
         >
           {props.text}

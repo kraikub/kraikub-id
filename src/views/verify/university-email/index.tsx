@@ -12,7 +12,7 @@ export const VerifyUniversityEmail: NextPage = () => {
     </Head>
     <AppBar>
       <Box>
-        <Typography variant="h5">ยืนยันอีเมลมหาวิทยาลัย</Typography>
+        <Typography variant="h5" className="letter-spacing-1">Verify your @ku.th email</Typography>
       </Box>
       <Box sx={{
         my: 2

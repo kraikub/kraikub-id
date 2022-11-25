@@ -18,14 +18,14 @@ export const AccountPage: NextPage = () => {
         <title>Your Kraikub ID</title>
       </Head>
       <AppBar>
-        <Typography variant="h6">บัญชีของคุณ</Typography>
+        <Typography variant="h6" className="letter-spacing-1">Your Kraikub ID</Typography>
         <Suggestions />
         <ProfilePic />
-        <Stack spacing={2} sx={{
+        <Stack spacing={5} sx={{
           my: 4
         }}>
           <General />
-          <Menu text="ยืนยันอีเมลมหาวิทยาลัย" mark="important" href="/verify/university-email"/>
+          <Menu text="Verify your @ku.th email" mark="important" href="/verify/university-email"/>
           <UseSuggestionEmail suggestedEmail="beamuonly@gmail.com" />
           <Education />
           <AppActivities />

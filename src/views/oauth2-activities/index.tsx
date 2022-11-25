@@ -34,7 +34,6 @@ const logs = [
 ];
 
 export const OAuthActivities: NextPage = () => {
-
   const theme = useTheme();
   const [whichActive, setWhichActive] = useState<number>();
 
@@ -46,13 +45,15 @@ export const OAuthActivities: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Sign in Activities (last 30 days)</title>
+        <title>Account Activities</title>
       </Head>
       <AppBar>
         <Box>
-          <Typography variant="h5">กิจกรรมการเข้าสู่ระบบ</Typography>
+          <Typography variant="h5" className="letter-spacing-1">
+            Sign in activities
+          </Typography>
           <Typography variant="body2" fontWeight={500} mt={2}>
-            ของบัญชี {"นาย ณัฐชนน จันทรศัพท์"}
+            Sign in activities of <strong>{"MR. NUTCHANON CHANTRASUP"}</strong> account.
           </Typography>
           <Box
             sx={{
@@ -83,11 +84,15 @@ export const OAuthActivities: NextPage = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography sx={{
+                    <Typography
+                      sx={{
                         fontWeight: 500,
                         fontSize: 14,
-                        color: theme.palette.text.secondary
-                      }}>{l.timestamp}</Typography>
+                        color: theme.palette.text.secondary,
+                      }}
+                    >
+                      {l.timestamp}
+                    </Typography>
                   </AccordionDetails>
                 </Accordion>
               );

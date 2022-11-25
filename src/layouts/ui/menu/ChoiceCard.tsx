@@ -20,9 +20,10 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
     <Box>
       <Typography
         sx={{
-          fontWeight: 600,
-          fontSize: 14,
+          fontWeight: 700,
+          fontSize: 12,
           mb: 2,
+          pl: "18px"
         }}
       >
         {props.title}

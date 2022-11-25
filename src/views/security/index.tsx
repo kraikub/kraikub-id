@@ -13,7 +13,7 @@ export const SecurityPage: NextPage = () => {
         <title>Security</title>
       </Head>
       <AppBar>
-        <Typography variant="h6">ความปลอดภัย</Typography>
+        <Typography variant="h6" className="letter-spacing-1">Security</Typography>
         <Stack spacing={5} my={4}>
           <UniversityEmail />
           <PersonalEmail />

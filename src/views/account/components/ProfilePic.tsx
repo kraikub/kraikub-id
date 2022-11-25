@@ -4,17 +4,7 @@ import { Box } from "@mui/system";
 export const ProfilePic = () => {
   return (
     <Paper>
-      <Stack
-        spacing={3}
-        direction={{
-          xs: "column",
-          sm: "row",
-        }}
-        justifyContent={{
-          xs: "center",
-          sm: "start",
-        }}
-      >
+      <Stack spacing={3} direction="row" justifyContent="start">
         <Box
           sx={{
             display: "flex",
@@ -24,10 +14,7 @@ export const ProfilePic = () => {
         >
           <Box
             sx={{
-              width: {
-                xs: "60%",
-                sm: "76px",
-              },
+              width: "76px",
               backgroundImage: `url(/resources/default-profile.png)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -45,12 +32,7 @@ export const ProfilePic = () => {
             alignItems: "center",
           }}
         >
-          <Box
-            textAlign={{
-              xs: "center",
-              sm: "start",
-            }}
-          >
+          <Box>
             <Typography
               variant="h6"
               className="letter-spacing-1"

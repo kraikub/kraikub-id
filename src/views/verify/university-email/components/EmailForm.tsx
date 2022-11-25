@@ -26,7 +26,7 @@ export const EmailForm = () => {
       </Alert>
       <Alert severity="error">
         <AlertTitle>อีเมลนี้ถูกใช้งานไปแล้ว!</AlertTitle>
-        คุณไม่สามารถใช้ nutchanon.chant@ku.th เป็นอีเมลของคุณได้เนื่ิองจากมีผู้เชื่อมต่ออีเมลนี้ไปก่อนหน้านี้แล้ว หากต้องการความช่วยเหลือ - <strong>ติดต่อเรา</strong>
+        คุณไม่สามารถใช้ nutchanon.chant@ku.th เป็นอีเมลของคุณได้เนื่องจากมีผู้เชื่อมต่ออีเมลนี้ไปก่อนหน้านี้แล้ว หากต้องการความช่วยเหลือ - <strong>ติดต่อเรา</strong>
       </Alert>
       <Alert severity="warning">
         <AlertTitle>ต้องเป็นอีเมล @ku.th เท่านั้น</AlertTitle>

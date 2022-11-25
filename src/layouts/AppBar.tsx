@@ -22,9 +22,10 @@ import { AiOutlineScan, AiOutlineHistory } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
+import { TapIcon } from "../components/svg/Tap";
 
 type Menu = {
-  text: string;
+  text: string | ReactNode;
   href: string;
   icon: ReactNode;
   iconSize?: string;
@@ -32,20 +33,38 @@ type Menu = {
 
 const mainMenus: Menu[] = [
   {
-    text: "บัญชีของคุณ",
+    text: "Your Account",
     href: "/account",
     icon: <MdAccountCircle />,
   },
   {
-    text: "ความปลอดภัย",
+    text: "Security",
     href: "/security",
     icon: <BiLockAlt />,
     iconSize: "20px",
   },
   {
-    text: "Student Scan",
-    href: "/whois",
-    icon: <AiOutlineScan />,
+    text: (
+      <>
+        <span
+          style={{
+            fontWeight: 700,
+          }}
+        >
+          KRAIKUB
+        </span>
+        <span
+          style={{
+            fontWeight: 400,
+            marginLeft: "4px"
+          }}
+        >
+           TAP
+        </span>
+      </>
+    ),
+    href: "/tap",
+    icon: <TapIcon />,
     iconSize: "20px",
   },
 ];
@@ -57,13 +76,13 @@ const shortcuts: Menu[] = [
     icon: <BsImage />,
   },
   {
-    text: "กิจกรรมการเข้าสู่ระบบ",
+    text: "Sign in activities",
     href: "/oauth2-activities",
     icon: <AiOutlineHistory />,
     iconSize: "20px",
   },
   {
-    text: "ตั้งค่า",
+    text: "Settings",
     href: "/settings",
     icon: <IoSettingsOutline />,
     iconSize: "20px",
@@ -79,11 +98,11 @@ const gridButtonStyles = {
 
 const groups = [
   {
-    name: "หน้าหลัก",
+    name: "MENUS",
     list: mainMenus,
   },
   {
-    name: "ทางลัด",
+    name: "SHORTCUTS",
     list: shortcuts,
   },
 ];
@@ -206,30 +225,17 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       >
         <Stack direction="row" alignItems="center" spacing="5px">
           <Typography
-            variant="h6"
             className="letter-spacing-1"
             sx={{
-              fontSize: 18,
+              fontSize: 16,
+              fontWeight: 700,
             }}
           >
-            Kraikub
+            KRAIKUB{" "}
+            <Typography display="inline" fontWeight={400}>
+              ID
+            </Typography>
           </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              border: "1px solid",
-              borderColor: theme.palette.text.primary,
-              fontSize: 14,
-              fontWeight: 600,
-              width: "24px",
-              height: "24px",
-              borderRadius: "6px",
-            }}
-          >
-            ID
-          </Box>
         </Stack>
       </Box>
 
@@ -257,8 +263,8 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
                 <Typography
                   variant="body2"
                   sx={{
-                    fontSize: 12,
-                    fontWeight: 500,
+                    fontSize: 10,
+                    fontWeight: 700,
                   }}
                 >
                   {g.name}

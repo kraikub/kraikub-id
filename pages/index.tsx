@@ -1,6 +1,5 @@
 import { Box, Container, Typography, Stack, Button } from "@mui/material";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { FiArrowRight } from "react-icons/fi";
 
 export default function Home() {
@@ -19,7 +18,7 @@ export default function Home() {
           One Account, for Kasetsart University
         </Typography>
         <Typography variant="body1">
-          จัดการ Kraikub ID ของคุณสำหรับใช้งานในมหาวิทยาลัย
+          Manage your KRAIKUB ID, and thats all for your KU life.
         </Typography>
         <Box py={4}>
           <Link href="/account">
@@ -30,7 +29,7 @@ export default function Home() {
                 gap: 2,
               }}
             >
-              ดำเนินการต่อด้วยบัญชี KU
+              Continue with KU
               <FiArrowRight />
             </Button>
           </Link>

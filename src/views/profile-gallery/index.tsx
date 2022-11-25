@@ -46,18 +46,6 @@ const gallery: Collection[] = [
       },
     ],
   },
-  {
-    name: "Girls Collection",
-    credit: {
-      text: "Woman Portrait Vectors by Vecteezy",
-      link: "https://www.vecteezy.com/free-vector/woman-portrait",
-    },
-    images: [
-      {
-        url: "",
-      },
-    ],
-  },
 ];
 
 export const ProfileGallery: NextPage = () => {
@@ -68,7 +56,7 @@ export const ProfileGallery: NextPage = () => {
       </Head>
       <AppBar>
         <Box>
-          <Typography variant="h5">เลือกโปรไฟล์ที่ใช่ สำหรับคุณ</Typography>
+          <Typography variant="h5" className="letter-spacing-1">Choose your style</Typography>
         </Box>
         <Stack my={4} spacing={4}>
           {gallery.map((g, gIndex) => {
