@@ -13,12 +13,12 @@ export default function Home() {
         justifyContent: "center",
       }}
     >
-      <Stack spacing={2} alignItems="center">
+      <Stack spacing={2} alignItems="center" textAlign="center">
         <Typography variant="h4" className="letter-spacing-2">
           One Account, for Kasetsart University
         </Typography>
         <Typography variant="body1">
-          Manage your KRAIKUB ID, and thats all for your KU life.
+          Manage your KRAIKUB ID
         </Typography>
         <Box py={4}>
           <Link href="/account">

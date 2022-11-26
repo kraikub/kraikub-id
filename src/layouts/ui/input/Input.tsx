@@ -13,6 +13,7 @@ import { IoIosClose } from "react-icons/io";
 interface InputProps {
   icon?: ReactNode;
   inputProps?: InputBaseProps;
+  onClearInput?: () => void;
 }
 
 export const Input: FC<InputProps> = (props) => {
@@ -49,7 +50,6 @@ export const Input: FC<InputProps> = (props) => {
         ) : null}
 
         <InputBase
-          type="email"
           sx={{
             width: "100%",
             fontSize: 16,
@@ -59,20 +59,23 @@ export const Input: FC<InputProps> = (props) => {
           {...props.inputProps}
         />
       </Stack>
-      <Box>
-        <IconButton
-          disableRipple
-          disableFocusRipple
-          size="small"
-          sx={{
-            p: "1px",
-            backgroundColor: theme.palette.divider,
-            fontSize: 24,
-          }}
-        >
-          <IoIosClose />
-        </IconButton>
-      </Box>
+      {props.onClearInput !== undefined ? (
+        <Box>
+          <IconButton
+            disableRipple
+            disableFocusRipple
+            size="small"
+            sx={{
+              p: "1px",
+              backgroundColor: theme.palette.divider,
+              fontSize: 24,
+            }}
+            onClick={props.onClearInput}
+          >
+            <IoIosClose />
+          </IconButton>
+        </Box>
+      ) : null}
     </Paper>
   );
 };

@@ -1,8 +1,14 @@
-export const TapIcon = () => {
+import { FC } from "react";
+
+interface IconProps {
+  size?: string | number;
+}
+
+export const TapIcon: FC<IconProps> = (props) => {
   return (
     <svg
-      width="60"
-      height="60"
+      width={props.size || "60"}
+      height={props.size || "60"}
       viewBox="0 0 60 60"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

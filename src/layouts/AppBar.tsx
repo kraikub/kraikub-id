@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Collapse,
   Divider,
   Drawer,
   Fade,
@@ -9,6 +10,7 @@ import {
   Paper,
   Stack,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { useRouter } from "next/router";
@@ -64,7 +66,7 @@ const mainMenus: Menu[] = [
       </>
     ),
     href: "/tap",
-    icon: <TapIcon />,
+    icon: <TapIcon size={30}/>,
     iconSize: "20px",
   },
 ];
@@ -119,7 +121,8 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
           router.pathname === href
             ? theme.palette.background.paper
             : "transparent",
-        fontSize: 14,
+        fontSize: 12,
+        fontWeight: 600,
         paddingX: "10px",
         textAlign: "start",
         alignItems: "center",
@@ -171,11 +174,12 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
   const router = useRouter();
   const scrollRef = useRef<number>(0);
   const dimensionY = useRef<number>(0);
-  const [showBottomNav, setShowBottomNav] = useState<boolean>(true);
+  const mdSize = useMediaQuery(theme.breakpoints.up("md"));
+  const [showDynamicNav, setShowDynamicNav] = useState<boolean>(true);
   const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
 
   useEffect(() => {
-    dimensionY.current = window.innerHeight;
+    dimensionY.current = document.body.scrollHeight;
     window.addEventListener(
       "scroll",
       () => {
@@ -183,20 +187,19 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           return;
         }
         if (window.scrollY < 0) {
-          return setShowBottomNav(true);
+          return setShowDynamicNav(true);
         }
         if (
           window.scrollY > scrollRef.current ||
-          window.screenY >= dimensionY.current
+          window.scrollY + window.innerHeight >= dimensionY.current
         ) {
           // downscroll code
-          setShowBottomNav(false);
+          setShowDynamicNav(false);
         } else {
           // upscroll code
-          setShowBottomNav(true);
+          setShowDynamicNav(true);
         }
         scrollRef.current = window.scrollY;
-        console.log(scrollRef.current);
       },
       false
     );
@@ -204,39 +207,55 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
 
   return (
     <Box>
-      <Box
-        sx={{
-          position: {
-            xs: "relative",
-            sm: "relative",
-            md: "fixed",
-          },
-          top: 0,
-          left: 0,
-          right: 0,
-          height: appbarConfig.navbar.height,
-          px: "20px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          zIndex: 39,
-        }}
-      >
-        <Stack direction="row" alignItems="center" spacing="5px">
-          <Typography
-            className="letter-spacing-1"
+      <Fade in={mdSize || showDynamicNav}>
+        <Box
+          sx={{
+            position: {
+              xs: "sticky",
+              sm: "sticky",
+              md: "fixed",
+            },
+            top: 0,
+            left: 0,
+            right: 0,
+            // backgroundColor: theme.palette.background.default,
+            backdropFilter: "blur(30px)",
+            height: appbarConfig.navbar.height,
+            px: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            zIndex: 39,
+          }}
+        >
+          <Stack direction="row" alignItems="center" spacing="5px">
+            <Typography
+              className="letter-spacing-1"
+              sx={{
+                fontSize: 16,
+                fontWeight: 700,
+              }}
+            >
+              KRAIKUB{" "}
+              <Typography display="inline" fontWeight={400}>
+                ID
+              </Typography>
+            </Typography>
+          </Stack>
+          <IconButton
+            onClick={() => setOpenMenuModal(true)}
             sx={{
-              fontSize: 16,
-              fontWeight: 700,
+              fontSize: 20,
+              color: "inherit",
+              display: {
+                md: "none"
+              }
             }}
           >
-            KRAIKUB{" "}
-            <Typography display="inline" fontWeight={400}>
-              ID
-            </Typography>
-          </Typography>
-        </Stack>
-      </Box>
+            <FiMenu />
+          </IconButton>
+        </Box>
+      </Fade>
 
       <Box
         sx={{
@@ -298,60 +317,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           {children}
         </Container>
       </Box>
-      <Fade in={showBottomNav}>
-        <Box
-          sx={{
-            display: {
-              xs: "block",
-              sm: "block",
-              md: "none",
-            },
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            zIndex: 35,
-          }}
-        >
-          <Paper
-            sx={{
-              p: 0,
-              borderRadius: "20px 20px 0 0",
-              backdropFilter: "blur(14px)",
-            }}
-          >
-            <Grid
-              container
-              sx={{
-                overflow: "visible",
-              }}
-            >
-              <Grid item xs={4} sx={{ ...gridButtonStyles }}></Grid>
-              <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-                <IconButton
-                  sx={{
-                    fontSize: 28,
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  <AiOutlineScan />
-                </IconButton>
-              </Grid>
-              <Grid item xs={4} sx={{ ...gridButtonStyles }}>
-                <IconButton
-                  onClick={() => setOpenMenuModal(true)}
-                  sx={{
-                    fontSize: 20,
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  <FiMenu />
-                </IconButton>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Box>
-      </Fade>
       <Drawer
         anchor="right"
         open={openMenuModal}
@@ -360,6 +325,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             width: "100vw",
             backgroundColor: theme.palette.background.default,
             backgroundImage: "none",
+            px: "8px"
           },
         }}
         onClose={() => setOpenMenuModal(false)}

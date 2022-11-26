@@ -1,6 +1,8 @@
 import { createTheme } from "@mui/material";
+import { kraikubBaseTheme } from "./base";
 
 export const lightTheme = createTheme({
+  ...kraikubBaseTheme,
   palette: {
     mode: "light",
     primary: {
@@ -27,76 +29,5 @@ export const lightTheme = createTheme({
       primary: "#1a1a1a",
     },
     divider: "#e6e6e6",
-  },
-  shape: {
-    borderRadius: 14,
-  },
-  typography: {
-    fontFamily: `'Inter','Kanit', sans-serif`,
-    fontSize: 16,
-    h1: {
-      fontWeight: 600,
-      letterSpacing: "-2px",
-    },
-    h2: {
-      fontWeight: 600,
-      letterSpacing: "-2px",
-    },
-    h3: {
-      fontWeight: 600,
-      letterSpacing: "-2px",
-    },
-    h4: {
-      fontWeight: 600,
-      letterSpacing: "-1px",
-    },
-    h5: {
-      fontWeight: 600,
-    },
-    h6: {
-      fontWeight: 600,
-    },
-    body1: {
-      fontWeight: 400,
-
-      fontSize: 16,
-    },
-    body2: {
-      fontWeight: 400,
-      fontSize: 14,
-      color: "#696969",
-    },
-    button: {
-      fontWeight: 500,
-    },
-  },
-  components: {
-    MuiButton: {
-      defaultProps: {
-        disableElevation: true,
-      },
-      styleOverrides: {
-        sizeLarge: {
-          fontSize: 14,
-        },
-      },
-    },
-    MuiLink: {
-      styleOverrides: {
-        root: {
-          textDecoration: "none",
-        },
-      },
-    },
-    MuiPaper: {
-      defaultProps: {
-        elevation: 0,
-      },
-      styleOverrides: {
-        root: {
-          padding: "18px",
-        },
-      },
-    },
   },
 });

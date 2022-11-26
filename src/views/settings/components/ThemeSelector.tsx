@@ -14,11 +14,12 @@ import { useAppTheme } from "../../../contexts/AppTheme";
 import { darkTheme } from "../../../styles/mui/kraikubid-dark";
 import { lightTheme } from "../../../styles/mui/kraikubid-light";
 import { lunarTheme } from "../../../styles/mui/kraikubid-lunar";
+import { naturalTheme } from "../../../styles/mui/kraikubid-natural";
 
 interface ThemePreviewProps {
   theme: Theme;
   label: string;
-  value: "light" | "dark" | "lunar";
+  value: "light" | "dark" | "lunar" | "natural";
 }
 
 const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
@@ -61,7 +62,9 @@ const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
           ></Box>
         </Box>
       </ThemeProvider>
-      <Typography fontSize={14} fontWeight={500}>
+      <Typography fontSize={12} fontWeight={600} sx={{
+        textTransform: "uppercase"
+      }}>
         {label}
       </Typography>
       <Checkbox
@@ -79,11 +82,12 @@ const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
 export const ThemeSelector = () => {
   return (
     <Paper>
-      <Typography>Display theme</Typography>
+      <Typography fontWeight={600}>Choose display theme</Typography>
       <Stack direction="row" gap={2} my={2} flexWrap="wrap">
         <ThemePreview theme={lightTheme} label="Light" value="light" />
         <ThemePreview theme={darkTheme} label="Dark" value="dark" />
         <ThemePreview theme={lunarTheme} label="Lunar" value="lunar" />
+        <ThemePreview theme={naturalTheme} label="Natural" value="natural" />
       </Stack>
     </Paper>
   );
