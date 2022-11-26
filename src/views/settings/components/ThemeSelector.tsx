@@ -13,11 +13,12 @@ import { FC } from "react";
 import { useAppTheme } from "../../../contexts/AppTheme";
 import { darkTheme } from "../../../styles/mui/kraikubid-dark";
 import { lightTheme } from "../../../styles/mui/kraikubid-light";
+import { lunarTheme } from "../../../styles/mui/kraikubid-lunar";
 
 interface ThemePreviewProps {
   theme: Theme;
   label: string;
-  value: "light" | "dark";
+  value: "light" | "dark" | "lunar";
 }
 
 const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
@@ -75,19 +76,14 @@ const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
   );
 };
 
-const gridItemStyles = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
 export const ThemeSelector = () => {
   return (
     <Paper>
-      <Typography>เลือกโหมดการแสดงผล</Typography>
-      <Stack direction="row" spacing={2} my={2}>
+      <Typography>Display theme</Typography>
+      <Stack direction="row" gap={2} my={2} flexWrap="wrap">
         <ThemePreview theme={lightTheme} label="Light" value="light" />
         <ThemePreview theme={darkTheme} label="Dark" value="dark" />
+        <ThemePreview theme={lunarTheme} label="Lunar" value="lunar" />
       </Stack>
     </Paper>
   );

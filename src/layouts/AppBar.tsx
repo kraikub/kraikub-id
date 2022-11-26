@@ -56,10 +56,10 @@ const mainMenus: Menu[] = [
         <span
           style={{
             fontWeight: 400,
-            marginLeft: "4px"
+            marginLeft: "4px",
           }}
         >
-           TAP
+          TAP
         </span>
       </>
     ),
@@ -214,7 +214,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           top: 0,
           left: 0,
           right: 0,
-          backgroundColor: theme.palette.background.default,
           height: appbarConfig.navbar.height,
           px: "20px",
           display: "flex",
@@ -247,7 +246,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           zIndex: 32,
           width: appbarConfig.sizebar.width,
           height: appbarConfig.sizebar.height,
-          backgroundColor: theme.palette.background.default,
           pl: "20px",
           display: {
             xs: "none",
@@ -283,7 +281,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       </Box>
       <Box
         sx={{
-          backgroundColor: theme.palette.background.default,
           pt: appbarConfig.navbar.height,
           minHeight: "100vh",
           ml: {
@@ -304,7 +301,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       <Fade in={showBottomNav}>
         <Box
           sx={{
-            backgroundColor: "#000",
             display: {
               xs: "block",
               sm: "block",
@@ -319,12 +315,11 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
         >
           <Paper
             sx={{
-              backgroundColor: theme.palette.background.default,
               p: 0,
-              borderRadius: "0 0 20px 20px",
+              borderRadius: "20px 20px 0 0",
+              backdropFilter: "blur(14px)",
             }}
           >
-            <Divider />
             <Grid
               container
               sx={{

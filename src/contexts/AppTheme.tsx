@@ -3,13 +3,25 @@ import Head from "next/head";
 import { createContext, useContext, useEffect, useState } from "react";
 import { darkTheme } from "../styles/mui/kraikubid-dark";
 import { lightTheme } from "../styles/mui/kraikubid-light";
+import { lunarTheme } from "../styles/mui/kraikubid-lunar";
 
-type AllowedTheme = "light" | "dark";
+type AllowedTheme = "light" | "dark" | "lunar";
 
-const allowedThemes = ["light", "dark"];
+const allowedThemes = ["light", "dark", "lunar"];
 
 type AppThemeProviderProps = {
   children: any;
+};
+
+const themeSwitcher = (t: AllowedTheme): Theme => {
+  if (t === "light") return lightTheme;
+  else if (t === "dark") return darkTheme;
+  else if (t === "lunar") return lunarTheme;
+  else {
+    // default theme is considered as "dark"
+    localStorage.setItem("app-theme", "dark");
+    return darkTheme;
+  }
 };
 
 const ThemeContext = createContext({
@@ -20,8 +32,8 @@ const ThemeContext = createContext({
 export function AppThemeProvider({ children }: AppThemeProviderProps) {
   const [theme, setTheme] = useState<AllowedTheme>();
 
-  function changeTheme(t: AllowedTheme) {
-    localStorage.setItem("app-theme", t);
+  function changeTheme(themeName: AllowedTheme) {
+    localStorage.setItem("app-theme", themeName);
     location.reload();
   }
 
@@ -34,7 +46,7 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
     if (t && allowedThemes.includes(t)) {
       setTheme(t as AllowedTheme);
     } else {
-      setTheme("light");
+      setTheme("dark");
     }
   }, []);
 
@@ -59,7 +71,7 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
           }
         />
       </Head>
-      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <ThemeProvider theme={themeSwitcher(theme)}>
         <CssBaseline />
         {children}
       </ThemeProvider>

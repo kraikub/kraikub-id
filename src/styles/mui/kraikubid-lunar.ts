@@ -1,18 +1,22 @@
 import { createTheme } from "@mui/material";
 
-export const lightTheme = createTheme({
+export const lunarTheme = createTheme({
   palette: {
-    mode: "light",
+    mode: "dark",
     primary: {
-      main: "#00D861",
-      contrastText: "#ffffff",
+      main: "#ffd152",
+      contrastText: "#000000",
     },
     secondary: {
       main: "#e8eaf1",
       contrastText: "#000000",
     },
     info: {
-      main: "#005EEB",
+      main: "#82deff",
+      contrastText: "#ffffff",
+    },
+    success: {
+      main: "#82ffcb",
       contrastText: "#ffffff",
     },
     error: {
@@ -20,13 +24,12 @@ export const lightTheme = createTheme({
       contrastText: "#ffffff",
     },
     background: {
-      default: "#f5f6f7",
-      paper: "#ffffff",
+      paper: "#ffffff10",
     },
     text: {
-      primary: "#1a1a1a",
+      primary: "#ffffff",
     },
-    divider: "#e6e6e6",
+    divider: "#e6e6e620",
   },
   shape: {
     borderRadius: 14,
@@ -67,10 +70,19 @@ export const lightTheme = createTheme({
       color: "#696969",
     },
     button: {
+      fontSize: 12,
       fontWeight: 500,
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: "rgb(14,20,36)",
+          backgroundImage: `linear-gradient(172deg, rgba(14,20,36,1) 0%, rgba(37,11,57,1) 100%)`,
+        },
+      },
+    },
     MuiButton: {
       defaultProps: {
         disableElevation: true,
@@ -95,6 +107,7 @@ export const lightTheme = createTheme({
       styleOverrides: {
         root: {
           padding: "18px",
+          backdropFilter: "blur(14px)",
         },
       },
     },

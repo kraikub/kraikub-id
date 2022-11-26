@@ -8,7 +8,7 @@ export const SettingPage: FC = () => {
     <>
       <AppBar>
         <Box>
-          <Typography variant="h5">ตั้งค่า</Typography>
+          <Typography variant="h5" className="letter-spacing-1">Settings</Typography>
         </Box>
         <Stack spacing={2} my={4}>
           <ThemeSelector />

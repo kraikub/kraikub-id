@@ -7,7 +7,7 @@ export const EmailForm = () => {
   return (
     <Box>
       <Typography variant="body1" mb={2}>
-        กรอกอีเมลมหาวิทยาลัยเกษตรศาสตร์ของคุณ (ลงท้ายด้วย @ku.th)
+        Enter your university email (ends with @ku.th)
       </Typography>
       <Input
         inputProps={{
@@ -16,25 +16,24 @@ export const EmailForm = () => {
       />
       <Box my={2}>
         <Typography variant="body2">
-          อีเมลยืนยันจาก Kraikub อาจใช้เวลาตั้งแต่ 1 - 5
-          นาทีในการส่งไปที่อีเมลของคุณ
+          This should takes about 1 - 5 mins.
         </Typography>
       </Box>
       <Alert severity="success">
-        <AlertTitle>อีเมลกำลังเดินทางไปหาคุณ!</AlertTitle>
-        เราได้ดำเนินการส่งอีเมลยืนยันไปที่ nutchanon.chant@ku.th เรียบร้อยแล้ว
+        <AlertTitle>All good! We are proccessing your verification.</AlertTitle>
+        An verification email will arrive <strong>{"nutchanon.chant@ku.th"}</strong> inbox as soon as possible.
       </Alert>
       <Alert severity="error">
-        <AlertTitle>อีเมลนี้ถูกใช้งานไปแล้ว!</AlertTitle>
-        คุณไม่สามารถใช้ nutchanon.chant@ku.th เป็นอีเมลของคุณได้เนื่องจากมีผู้เชื่อมต่ออีเมลนี้ไปก่อนหน้านี้แล้ว หากต้องการความช่วยเหลือ - <strong>ติดต่อเรา</strong>
+        <AlertTitle>This email has already been used by someone.</AlertTitle>
+        You cannot use {"nutchanon.chant@ku.th"} as your university email. Please feel free to contact us if you want any help. - <strong>Contact us</strong>
       </Alert>
       <Alert severity="warning">
-        <AlertTitle>ต้องเป็นอีเมล @ku.th เท่านั้น</AlertTitle>
-        อีเมลมหาวิทยาลัยจะต้องลงท้าย @ku.th เท่านั้น - <strong>ติดต่อเรา</strong>
+        <AlertTitle>University email needs to end with @ku.th</AlertTitle>
+        You enter a wrong pattern email - <strong>Contact us</strong>
       </Alert>
       <Stack my={3} direction="row" spacing={3}>
         <Button variant="contained" size="large">
-          ส่งอีเมลยืนยัน
+          Send me an verify email
         </Button>
       </Stack>
     </Box>

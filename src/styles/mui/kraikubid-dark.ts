@@ -36,15 +36,19 @@ export const darkTheme = createTheme({
     fontSize: 16,
     h1: {
       fontWeight: 600,
+      letterSpacing: "-2px",
     },
     h2: {
       fontWeight: 600,
+      letterSpacing: "-2px",
     },
     h3: {
       fontWeight: 600,
+      letterSpacing: "-2px",
     },
     h4: {
       fontWeight: 600,
+      letterSpacing: "-1px",
     },
     h5: {
       fontWeight: 600,
@@ -53,24 +57,27 @@ export const darkTheme = createTheme({
       fontWeight: 600,
     },
     body1: {
-      fontWeight: 300,
+      fontWeight: 400,
       fontSize: 16,
     },
     body2: {
-      fontWeight: 300,
+      fontWeight: 400,
       fontSize: 14,
       color: "#696969",
     },
     button: {
-      fontSize: 14,
       fontWeight: 500,
-      textTransform: "none",
     },
   },
   components: {
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+      },
+      styleOverrides: {
+        sizeLarge: {
+          fontSize: 14,
+        },
       },
     },
     MuiLink: {
