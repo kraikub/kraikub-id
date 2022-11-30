@@ -4,7 +4,7 @@ export const kraikubBaseTheme = createTheme({
     borderRadius: 14,
   },
   typography: {
-    fontFamily: `'Inter','Kanit', sans-serif`,
+    fontFamily: `'Poppins','Kanit', sans-serif`,
     fontSize: 16,
     h1: {
       fontWeight: 600,
