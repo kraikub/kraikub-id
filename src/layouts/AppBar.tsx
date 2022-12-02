@@ -66,7 +66,7 @@ const mainMenus: Menu[] = [
       </>
     ),
     href: "/tap",
-    icon: <TapIcon size={30}/>,
+    icon: <TapIcon size={30} />,
     iconSize: "20px",
   },
 ];
@@ -248,8 +248,8 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               fontSize: 20,
               color: "inherit",
               display: {
-                md: "none"
-              }
+                md: "none",
+              },
             }}
           >
             <FiMenu />
@@ -314,7 +314,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             pb: "100px",
           }}
         >
-          {children}
+          <Box maxWidth={appbarConfig.content.maxWidth}>{children}</Box>
         </Container>
       </Box>
       <Drawer
@@ -325,7 +325,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             width: "100vw",
             backgroundColor: theme.palette.background.default,
             backgroundImage: "none",
-            px: "8px"
+            px: "8px",
           },
         }}
         onClose={() => setOpenMenuModal(false)}

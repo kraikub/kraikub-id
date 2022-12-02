@@ -35,8 +35,6 @@ export const ProfilePic = () => {
           <Box>
             <Typography
               variant="h6"
-              className="letter-spacing-1"
-              fontWeight={700}
               fontSize={18}
             >
               MR. NUTCHANON CHANTRASUP

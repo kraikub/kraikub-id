@@ -3,7 +3,10 @@ export const appbarConfig = {
     height: "66px"
   },
   sizebar: {
-    width: "250px",
+    width: "280px",
     height: "100vh",
   },
+  content: {
+    maxWidth: "840px"
+  }
 };

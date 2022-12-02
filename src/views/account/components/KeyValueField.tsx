@@ -22,7 +22,7 @@ export const KeyValueField: FC<KeyVauleFieldProps> = ({ title, value }) => {
         </Typography>
       </Grid>
       <Grid item xs={8} sm={9} md={10}>
-        <Typography color={theme.palette.text.primary} fontWeight={700}>
+        <Typography color={theme.palette.text.primary} fontWeight={600}>
           {value}
         </Typography>
       </Grid>
