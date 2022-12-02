@@ -1,13 +1,9 @@
 import {
   Box,
   Button,
-  Collapse,
-  Divider,
   Drawer,
   Fade,
   Grid,
-  IconButton,
-  Paper,
   Stack,
   Typography,
   useMediaQuery,
@@ -20,11 +16,9 @@ import { MdAccountCircle } from "react-icons/md";
 import { BiLockAlt } from "react-icons/bi";
 import { BsImage } from "react-icons/bs";
 import { Container } from "@mui/system";
-import { AiOutlineScan, AiOutlineHistory } from "react-icons/ai";
-import { IoIosArrowBack } from "react-icons/io";
-import { FiMenu } from "react-icons/fi";
+import { AiOutlineHistory } from "react-icons/ai";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
-import { TapIcon } from "../components/svg/Tap";
 
 type Menu = {
   text: string | ReactNode;
@@ -43,30 +37,6 @@ const mainMenus: Menu[] = [
     text: "Security",
     href: "/security",
     icon: <BiLockAlt />,
-    iconSize: "20px",
-  },
-  {
-    text: (
-      <>
-        <span
-          style={{
-            fontWeight: 700,
-          }}
-        >
-          KRAIKUB
-        </span>
-        <span
-          style={{
-            fontWeight: 400,
-            marginLeft: "4px",
-          }}
-        >
-          TAP
-        </span>
-      </>
-    ),
-    href: "/tap",
-    icon: <TapIcon size={30} />,
     iconSize: "20px",
   },
 ];
@@ -119,7 +89,7 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
       sx={{
         backgroundColor:
           router.pathname === href
-            ? theme.palette.background.paper
+            ? theme.palette.secondary.main
             : "transparent",
         fontSize: 12,
         fontWeight: 600,
@@ -132,7 +102,7 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
             ? theme.palette.text.primary
             : theme.palette.text.secondary,
         "&:hover": {
-          backgroundColor: theme.palette.background.paper,
+          backgroundColor: theme.palette.secondary.light,
         },
       }}
       onClick={() => router.push(href)}
@@ -210,17 +180,15 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       <Fade in={mdSize || showDynamicNav}>
         <Box
           sx={{
-            position: {
-              xs: "sticky",
-              sm: "sticky",
-              md: "fixed",
-            },
+            position: "fixed",
             top: 0,
             left: 0,
             right: 0,
-            // backgroundColor: theme.palette.background.default,
-            backdropFilter: "blur(30px)",
+            backgroundColor: theme.palette.background.default,
             height: appbarConfig.navbar.height,
+            borderStyle: "solid",
+            borderWidth: "0 0 1px 0",
+            borderColor: theme.palette.divider,
             px: "20px",
             display: "flex",
             justifyContent: "space-between",
@@ -242,18 +210,25 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               </Typography>
             </Typography>
           </Stack>
-          <IconButton
+          <Button
             onClick={() => setOpenMenuModal(true)}
+            color="secondary"
+            variant="contained"
             sx={{
+              p: "3px",
               fontSize: 20,
+              minWidth: "40px",
+              width: "40px",
+              aspectRatio: "1/1",
+              borderRadius: "1000px",
               color: "inherit",
               display: {
                 md: "none",
               },
             }}
           >
-            <FiMenu />
-          </IconButton>
+            <IoIosArrowDown />
+          </Button>
         </Box>
       </Fade>
 
@@ -265,7 +240,8 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           zIndex: 32,
           width: appbarConfig.sizebar.width,
           height: appbarConfig.sizebar.height,
-          pl: "20px",
+          px: "8px",
+          pt: "30px",
           display: {
             xs: "none",
             sm: "none",
@@ -302,6 +278,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
         sx={{
           pt: appbarConfig.navbar.height,
           minHeight: "100vh",
+          background: `linear-gradient(#00000006, #00000006), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
           ml: {
             xs: 0,
             sm: 0,
@@ -311,18 +288,25 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
       >
         <Container
           sx={{
+            pt: "40px",
             pb: "100px",
+            px: {
+              xs: "0px",
+              sm: "0px",
+              md: "30px",
+            },
           }}
         >
           <Box maxWidth={appbarConfig.content.maxWidth}>{children}</Box>
         </Container>
       </Box>
       <Drawer
-        anchor="right"
+        anchor="top"
         open={openMenuModal}
         PaperProps={{
           sx: {
             width: "100vw",
+            height: "100vh",
             backgroundColor: theme.palette.background.default,
             backgroundImage: "none",
             px: "8px",
@@ -334,17 +318,28 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           sx={{
             py: "20px",
             px: "10px",
+            display: "flex",
+            justifyContent: "end",
           }}
         >
           <Button
-            color="primary"
             onClick={() => setOpenMenuModal(false)}
-            variant="text"
+            color="secondary"
+            variant="contained"
             sx={{
-              fontSize: 18,
+              p: "3px",
+              fontSize: 20,
+              minWidth: "40px",
+              width: "40px",
+              aspectRatio: "1/1",
+              borderRadius: "1000px",
+              color: "inherit",
+              display: {
+                md: "none",
+              },
             }}
           >
-            <IoIosArrowBack /> Back
+            <IoIosArrowUp />
           </Button>
         </Box>
         <Container>

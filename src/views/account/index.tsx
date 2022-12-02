@@ -4,6 +4,8 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { AppBar } from "../../layouts/AppBar";
 import { Menu } from "../../layouts/ui/menu/Menu";
+import { MobileSaveSection } from "../../layouts/ui/section/MobileSaveSection";
+import { PageHeading } from "../../layouts/ui/Text/PageHeading";
 import { AppActivities } from "./components/AppActivities";
 import { Education } from "./components/Education";
 import { General } from "./components/General";
@@ -18,16 +20,22 @@ export const AccountPage: NextPage = () => {
         <title>Your Kraikub ID</title>
       </Head>
       <AppBar>
-        <Typography variant="h6" className="letter-spacing-1">Your Kraikub ID</Typography>
-        <Suggestions />
+        <PageHeading>Your Kraikub ID</PageHeading>
         <ProfilePic />
-        <Stack spacing={5} sx={{
-          my: 4
-        }}>
-          <General />
-          <Menu text="Verify your @ku.th email" mark="important" href="/verify/university-email"/>
+        <Stack
+          spacing={5}
+          sx={{
+            my: 4,
+          }}
+        >
+          {/* <General /> */}
+          <Menu
+            text="Verify your @ku.th email"
+            mark="important"
+            href="/verify/university-email"
+          />
           <UseSuggestionEmail suggestedEmail="beamuonly@gmail.com" />
-          <Education />
+          {/* <Education /> */}
           <AppActivities />
         </Stack>
       </AppBar>

@@ -11,6 +11,9 @@ import Head from "next/head";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { AppBar } from "../../layouts/AppBar";
+import { MobileSaveSection } from "../../layouts/ui/section/MobileSaveSection";
+import { PaperSection } from "../../layouts/ui/section/PaperSection";
+import { PageHeading } from "../../layouts/ui/Text/PageHeading";
 
 const logs = [
   {
@@ -49,54 +52,58 @@ export const OAuthActivities: NextPage = () => {
       </Head>
       <AppBar>
         <Box>
-          <Typography variant="h5" className="letter-spacing-1">
-            Sign in activities
-          </Typography>
-          <Typography variant="body2" fontWeight={500} mt={2}>
-            Sign in activities of <strong>{"MR. NUTCHANON CHANTRASUP"}</strong> account.
-          </Typography>
+          <PageHeading>Sign in activities</PageHeading>
+          <MobileSaveSection>
+            Sign in activities of <strong>{"MR. NUTCHANON CHANTRASUP"}</strong>{" "}
+            account.
+          </MobileSaveSection>
           <Box
             sx={{
               my: 6,
             }}
           >
-            {logs.map((l, index) => {
-              return (
-                <Accordion
-                  disableGutters
-                  expanded={whichActive === index}
-                  onChange={handleChange(index)}
-                  sx={{
-                    py: "4px",
-                  }}
-                >
-                  <AccordionSummary
-                    key={`oauth2-act-${index}`}
-                    expandIcon={<IoIosArrowDown />}
+            <PaperSection sx={{
+              p: 0,
+            }}>
+              {logs.map((l, index) => {
+                return (
+                  <Accordion
+                    elevation={0}
+                    disableGutters
+                    expanded={whichActive === index}
+                    onChange={handleChange(index)}
+                    sx={{
+                      py: "4px",
+                    }}
                   >
-                    <Typography
-                      sx={{
-                        fontWeight: 500,
-                        fontSize: 14,
-                      }}
+                    <AccordionSummary
+                      key={`oauth2-act-${index}`}
+                      expandIcon={<IoIosArrowDown />}
                     >
-                      {l.appName}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography
-                      sx={{
-                        fontWeight: 500,
-                        fontSize: 14,
-                        color: theme.palette.text.secondary,
-                      }}
-                    >
-                      {l.timestamp}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              );
-            })}
+                      <Typography
+                        sx={{
+                          fontWeight: 500,
+                          fontSize: 14,
+                        }}
+                      >
+                        {l.appName}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography
+                        sx={{
+                          fontWeight: 500,
+                          fontSize: 14,
+                          color: theme.palette.text.secondary,
+                        }}
+                      >
+                        {l.timestamp}
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                );
+              })}
+            </PaperSection>
           </Box>
         </Box>
       </AppBar>

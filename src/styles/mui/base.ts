@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material";
-export const kraikubBaseTheme = createTheme({
+const kraikubBaseTheme = createTheme({
   shape: {
-    borderRadius: 14,
+    borderRadius: 12,
   },
   typography: {
     fontFamily: `'Poppins','Kanit', sans-serif`,
@@ -42,6 +42,33 @@ export const kraikubBaseTheme = createTheme({
       fontWeight: 500,
     },
   },
+  shadows: [
+    "none", 
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+    "0 2px 5px #00000010",
+  ],
   components: {
     MuiButton: {
       defaultProps: {
@@ -50,6 +77,7 @@ export const kraikubBaseTheme = createTheme({
       styleOverrides: {
         sizeLarge: {
           fontSize: 14,
+          height: "46px"
         },
       },
     },
@@ -62,14 +90,17 @@ export const kraikubBaseTheme = createTheme({
     },
     MuiPaper: {
       defaultProps: {
-        elevation: 0,
+        elevation: 1,
       },
       styleOverrides: {
         root: {
           padding: "18px",
           backdropFilter: "blur(14px)",
         },
+        
       },
     },
   },
 });
+
+export default kraikubBaseTheme

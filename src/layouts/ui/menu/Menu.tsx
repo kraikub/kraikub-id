@@ -2,6 +2,7 @@ import { Paper, Stack, Typography, useTheme } from "@mui/material";
 import { FC, ReactNode } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoAlertCircle } from "react-icons/io5";
+import { MuiPaperSx } from "../../../styles/mui/custom-mui-sx";
 import { LinkWrap } from "../link/LinkWrap";
 
 interface Menu extends Choice {
@@ -26,13 +27,14 @@ export const Menu: FC<Menu> = (props) => {
       <Paper
         sx={{
           p: "18px",
-          height: "46px",
+          height: "60px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           cursor: "pointer",
+          ...MuiPaperSx.disableBorderRadiusOnMobile,
           "&:hover": {
-            backgroundColor: theme.palette.divider,
+            backgroundColor: theme.palette.secondary.light,
           },
         }}
       >

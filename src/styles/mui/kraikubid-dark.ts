@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { kraikubBaseTheme } from "./base";
+import kraikubBaseTheme from "./base";
 
 export const darkTheme = createTheme({
   ...kraikubBaseTheme,
@@ -10,7 +10,7 @@ export const darkTheme = createTheme({
       contrastText: "#000000",
     },
     secondary: {
-      main: "#181818",
+      main: "#ffffff1a",
       contrastText: "#ffffff",
     },
     info: {
@@ -22,12 +22,12 @@ export const darkTheme = createTheme({
       contrastText: "#ffffff",
     },
     background: {
-      default: "#000000",
-      paper: "#ffffff1b",
+      default: "#18191a",
+      paper: "#ffffff01",
     },
     text: {
       primary: "#f7f7f7",
     },
-    divider: "#292929",
+    divider: "#ffffff1a",
   },
 });

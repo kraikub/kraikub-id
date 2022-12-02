@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { kraikubBaseTheme } from "./base";
+import kraikubBaseTheme from "./base";
 
 export const lunarTheme = createTheme({
   ...kraikubBaseTheme,

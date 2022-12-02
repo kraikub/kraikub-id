@@ -1,9 +1,10 @@
-import { Divider, Paper, Stack, Typography } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { PaperSection } from "../../../layouts/ui/section/PaperSection";
 
 export const ProfilePic = () => {
   return (
-    <Paper>
+    <PaperSection>
       <Stack spacing={3} direction="row" justifyContent="start">
         <Box
           sx={{
@@ -18,7 +19,7 @@ export const ProfilePic = () => {
               backgroundImage: `url(/resources/default-profile.png)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              borderRadius: "20000px",
+              borderRadius: "6px",
               aspectRatio: "1/1",
               alignSelf: "flex-start",
             }}
@@ -33,10 +34,7 @@ export const ProfilePic = () => {
           }}
         >
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={18}
-            >
+            <Typography variant="h6" fontSize={18}>
               MR. NUTCHANON CHANTRASUP
             </Typography>
             <Typography
@@ -51,11 +49,6 @@ export const ProfilePic = () => {
           </Box>
         </Box>
       </Stack>
-      <Divider
-        sx={{
-          my: 2,
-        }}
-      />
-    </Paper>
+    </PaperSection>
   );
 };

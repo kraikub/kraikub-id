@@ -1,12 +1,12 @@
 import {
   Button,
   Checkbox,
-  Grid,
   Paper,
   Stack,
   Theme,
   ThemeProvider,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { FC } from "react";
@@ -24,11 +24,13 @@ interface ThemePreviewProps {
 
 const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
   const { theme: current, changeTheme } = useAppTheme();
+  const currentTheme = useTheme();
 
   return (
     <Stack alignItems="center" spacing={2}>
       <ThemeProvider theme={theme}>
-        <Box
+        <Paper
+          elevation={2}
           sx={{
             width: "100%",
             maxWidth: "180px",
@@ -60,11 +62,15 @@ const ThemePreview: FC<ThemePreviewProps> = ({ theme, label, value }) => {
               borderRadius: "8px",
             }}
           ></Box>
-        </Box>
+        </Paper>
       </ThemeProvider>
-      <Typography fontSize={12} fontWeight={600} sx={{
-        textTransform: "uppercase"
-      }}>
+      <Typography
+        fontSize={12}
+        fontWeight={600}
+        sx={{
+          textTransform: "uppercase",
+        }}
+      >
         {label}
       </Typography>
       <Checkbox

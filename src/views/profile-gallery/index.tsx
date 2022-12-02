@@ -2,6 +2,7 @@ import { Box, Grid, Link, Stack, Typography } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
 import { AppBar } from "../../layouts/AppBar";
+import { PageHeading } from "../../layouts/ui/Text/PageHeading";
 import { Artboard } from "./components/Artboard";
 
 interface Collection {
@@ -55,9 +56,7 @@ export const ProfileGallery: NextPage = () => {
         <title>Choose your style.</title>
       </Head>
       <AppBar>
-        <Box>
-          <Typography variant="h5" className="letter-spacing-1">Choose your style</Typography>
-        </Box>
+        <PageHeading>Choose your style</PageHeading>
         <Stack my={4} spacing={4}>
           {gallery.map((g, gIndex) => {
             return (
