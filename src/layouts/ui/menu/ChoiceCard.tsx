@@ -32,6 +32,7 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
             // pl: "18px",
           }}
           color={theme.palette.text.secondary}
+          textTransform="uppercase"
         >
           {props.title}
         </Typography>
@@ -83,6 +84,7 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
                       color: theme.palette.text.primary,
                     }}
                     size="large"
+                    onClick={c.onClick}
                   >
                     {c.text}
                   </Button>

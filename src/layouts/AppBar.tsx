@@ -4,6 +4,7 @@ import {
   Drawer,
   Fade,
   Grid,
+  Paper,
   Stack,
   Typography,
   useMediaQuery,
@@ -17,8 +18,11 @@ import { BiLockAlt } from "react-icons/bi";
 import { BsImage } from "react-icons/bs";
 import { Container } from "@mui/system";
 import { AiOutlineHistory } from "react-icons/ai";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosDownload } from "react-icons/io";
+import { TbCode } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
+import { FiDownload, FiLogOut } from "react-icons/fi";
+import { GithubBanner } from "../components/banners/Github";
 
 type Menu = {
   text: string | ReactNode;
@@ -39,9 +43,6 @@ const mainMenus: Menu[] = [
     icon: <BiLockAlt />,
     iconSize: "20px",
   },
-];
-
-const shortcuts: Menu[] = [
   {
     text: "Profile Gallery",
     href: "/profile-gallery",
@@ -59,7 +60,14 @@ const shortcuts: Menu[] = [
     icon: <IoSettingsOutline />,
     iconSize: "20px",
   },
+  {
+    text: "Sign out",
+    href: "/logout",
+    icon: <FiLogOut />,
+    iconSize: "20px",
+  },
 ];
+
 
 const gridButtonStyles = {
   display: "flex",
@@ -70,12 +78,8 @@ const gridButtonStyles = {
 
 const groups = [
   {
-    name: "MENUS",
+    name: "",
     list: mainMenus,
-  },
-  {
-    name: "SHORTCUTS",
-    list: shortcuts,
   },
 ];
 
@@ -87,11 +91,14 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
       disableRipple
       variant="contained"
       sx={{
+        overflow: "hidden",
+        position: "relative",
+        textTransform: "none",
         backgroundColor:
           router.pathname === href
             ? theme.palette.secondary.main
             : "transparent",
-        fontSize: 12,
+        fontSize: 14,
         fontWeight: 600,
         paddingX: "10px",
         textAlign: "start",
@@ -102,11 +109,23 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
             ? theme.palette.text.primary
             : theme.palette.text.secondary,
         "&:hover": {
-          backgroundColor: theme.palette.secondary.light,
+          backgroundColor: theme.palette.secondary.main,
         },
       }}
       onClick={() => router.push(href)}
     >
+      <Box sx={{
+        display: router.pathname === href ? "block" : "none",
+        position: "absolute",
+        top: "25%",
+        bottom: "25%",
+        left: 0,
+        width: "4px",
+        borderRadius: "0 3px 3px 0",
+        backgroundColor: theme.palette.primary.main
+      }}>
+
+      </Box>
       <Grid container>
         <Grid
           item
@@ -142,13 +161,33 @@ interface AppBarProps {
 export const AppBar: FC<AppBarProps> = ({ children }) => {
   const theme = useTheme();
   const router = useRouter();
+  const [rightSideBanner, setRightSideBanner] = useState(false);
   const scrollRef = useRef<number>(0);
   const dimensionY = useRef<number>(0);
   const mdSize = useMediaQuery(theme.breakpoints.up("md"));
   const [showDynamicNav, setShowDynamicNav] = useState<boolean>(true);
   const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
 
+  function handleResize() {
+    if (
+      window.innerWidth <
+      appbarConfig.sidebar.number.width +
+        appbarConfig.content.number.maxWidth +
+        appbarConfig.rightBanner.number.width +
+        18
+    ) {
+      setRightSideBanner(false);
+    } else {
+      setRightSideBanner(true);
+    }
+  }
+
   useEffect(() => {
+    // Window size
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    // Scroll
     dimensionY.current = document.body.scrollHeight;
     window.addEventListener(
       "scroll",
@@ -176,15 +215,18 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{
+      background: `linear-gradient(#00000006, #00000006), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
+    }}>
       <Fade in={mdSize || showDynamicNav}>
-        <Box
+        <Paper
           sx={{
             position: "fixed",
             top: 0,
             left: 0,
             right: 0,
-            backgroundColor: theme.palette.background.default,
+            borderRadius: 0,
+            backgroundColor: theme.palette.background.paper,
             height: appbarConfig.navbar.height,
             borderStyle: "solid",
             borderWidth: "0 0 1px 0",
@@ -200,56 +242,103 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             <Typography
               className="letter-spacing-1"
               sx={{
-                fontSize: 16,
+                opacity: 0.8,
+                fontSize: 22,
                 fontWeight: 700,
               }}
             >
               KRAIKUB{" "}
-              <Typography display="inline" fontWeight={400}>
+              <Typography display="inline" fontWeight={400} fontSize="inherit">
                 ID
               </Typography>
             </Typography>
           </Stack>
-          <Button
-            onClick={() => setOpenMenuModal(true)}
-            color="secondary"
-            variant="contained"
-            sx={{
-              p: "3px",
-              fontSize: 20,
-              minWidth: "40px",
-              width: "40px",
-              aspectRatio: "1/1",
-              borderRadius: "1000px",
-              color: "inherit",
-              display: {
-                md: "none",
-              },
-            }}
-          >
-            <IoIosArrowDown />
-          </Button>
-        </Box>
+          <Stack direction="row" spacing="12px">
+            <Button
+              color="secondary"
+              variant="contained"
+              sx={{
+                p: "3px",
+                fontSize: 22,
+                minWidth: "40px",
+                width: "40px",
+                aspectRatio: "1/1",
+                borderRadius: "1000px",
+                color: "inherit",
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+                },
+              }}
+            >
+              <FiDownload />
+            </Button>
+            <Button
+              color="secondary"
+              variant="contained"
+              sx={{
+                p: "3px",
+                fontSize: 24,
+                minWidth: "40px",
+                width: "40px",
+                aspectRatio: "1/1",
+                borderRadius: "1000px",
+                color: "inherit",
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+                },
+              }}
+            >
+              <TbCode />
+            </Button>
+            <Button
+              onClick={() => setOpenMenuModal(true)}
+              color="secondary"
+              variant="contained"
+              sx={{
+                p: "3px",
+                fontSize: 20,
+                minWidth: "40px",
+                width: "40px",
+                aspectRatio: "1/1",
+                borderRadius: "1000px",
+                color: "inherit",
+                display: {
+                  md: "none",
+                },
+              }}
+            >
+              <IoIosArrowDown />
+            </Button>
+          </Stack>
+        </Paper>
       </Fade>
 
       <Box
         sx={{
           position: "fixed",
-          top: appbarConfig.navbar.height,
+          borderRadius: 0,
+          top: 0,
           left: 0,
           zIndex: 32,
-          width: appbarConfig.sizebar.width,
-          height: appbarConfig.sizebar.height,
+          width: appbarConfig.sidebar.width,
+          height: appbarConfig.sidebar.height,
           px: "8px",
-          pt: "30px",
+          pt: `${appbarConfig.navbar.number.height+20}px`,
+          pb: "12px",
           display: {
             xs: "none",
             sm: "none",
-            md: "block",
+            md: "flex",
           },
+          flexDirection: "column",
+          justifyContent: "space-between",
         }}
       >
-        <Stack spacing={4}>
+        <Stack spacing={4} width="100%">
           {groups.map((g, index) => {
             return (
               <Box key={`menu-group-${index}`}>
@@ -273,16 +362,18 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             );
           })}
         </Stack>
+        <Stack width="100%">
+          
+        </Stack>
       </Box>
       <Box
         sx={{
           pt: appbarConfig.navbar.height,
           minHeight: "100vh",
-          background: `linear-gradient(#00000006, #00000006), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
           ml: {
             xs: 0,
             sm: 0,
-            md: appbarConfig.sizebar.width,
+            md: appbarConfig.sidebar.width,
           },
         }}
       >
@@ -293,7 +384,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             px: {
               xs: "0px",
               sm: "0px",
-              md: "30px",
+              md: "18px",
             },
           }}
         >
@@ -371,6 +462,23 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           </Stack>
         </Container>
       </Drawer>
+      <Box
+        sx={{
+          display: rightSideBanner ? "block" : "none",
+          position: "fixed",
+          bottom: 0,
+          right: 0,
+          top: appbarConfig.navbar.height,
+          width: appbarConfig.rightBanner.width,
+          py: "18px",
+          px: "8px",
+          borderRadius: 0,
+        }}
+      >
+        <Stack spacing="18px">
+          <GithubBanner />
+        </Stack>
+      </Box>
     </Box>
   );
 };

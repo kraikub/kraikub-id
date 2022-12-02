@@ -19,7 +19,7 @@ export const ProfilePic = () => {
               backgroundImage: `url(/resources/default-profile.png)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              borderRadius: "6px",
+              borderRadius: "600px",
               aspectRatio: "1/1",
               alignSelf: "flex-start",
             }}
