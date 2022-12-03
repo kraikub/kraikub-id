@@ -241,6 +241,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
         background: `linear-gradient(#191b1f04, #191b1f04), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
       }}
     >
+      {/* Bottom bar in moblie */}
       <Fade in={!mdSize && showDynamicNav}>
         <Paper
           sx={{
@@ -254,7 +255,8 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             borderStyle: "solid",
             borderWidth: "1px 0 0 0",
             borderColor: theme.palette.divider,
-            px: "20px",
+            py: "32px",
+            px: "28px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -265,52 +267,12 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           </Stack>
           <Stack direction="row" spacing="12px">
             <Button
-              color="secondary"
-              variant="contained"
-              sx={{
-                p: "3px",
-                fontSize: 22,
-                minWidth: "30px",
-                width: "30px",
-                aspectRatio: "1/1",
-                borderRadius: "1000px",
-                color: "inherit",
-                display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "flex",
-                },
-              }}
-            >
-              <FiDownload />
-            </Button>
-            <Button
-              color="secondary"
-              variant="contained"
-              sx={{
-                p: "3px",
-                fontSize: 24,
-                minWidth: "30px",
-                width: "30px",
-                aspectRatio: "1/1",
-                borderRadius: "1000px",
-                color: "inherit",
-                display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "flex",
-                },
-              }}
-            >
-              <TbCode />
-            </Button>
-            <Button
               onClick={() => setOpenMenuModal(true)}
               color="secondary"
               variant="contained"
               sx={{
                 p: "3px",
-                fontSize: 18,
+                fontSize: 22,
                 minWidth: "32px",
                 width: "32px",
                 aspectRatio: "1/1",
