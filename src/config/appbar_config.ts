@@ -1,15 +1,15 @@
 export const appbarConfig = {
   navbar: {
-    height: "66px",
+    height: "48px",
     number: {
-      height: 66,
+      height: 48,
     }
   },
   sidebar: {
-    width: "280px",
+    width: "230px",
     height: "100vh",
     number: {
-      width: 280,
+      width: 230,
     }
   },
   content: {

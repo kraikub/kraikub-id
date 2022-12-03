@@ -91,7 +91,7 @@ const kraikubBaseTheme = createTheme({
     },
     MuiPaper: {
       defaultProps: {
-        elevation: 1,
+        elevation: 0,
       },
       styleOverrides: {
         root: {

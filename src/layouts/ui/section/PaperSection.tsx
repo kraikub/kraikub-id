@@ -11,6 +11,7 @@ export const PaperSection: FC<PaperSectionProps> = (props) => {
   return (
     <Paper sx={{
       ...MuiPaperSx.disableBorderRadiusOnMobile,
+      ...MuiPaperSx.disableBorderXOnMobile,
       ...props.sx
     }}>
       {props.children}

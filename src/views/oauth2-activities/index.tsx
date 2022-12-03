@@ -10,7 +10,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { AppBar } from "../../layouts/AppBar";
+import { AppBar } from "../../layouts/appbar/AppBar";
 import { MobileSaveSection } from "../../layouts/ui/section/MobileSaveSection";
 import { PaperSection } from "../../layouts/ui/section/PaperSection";
 import { PageHeading } from "../../layouts/ui/Text/PageHeading";

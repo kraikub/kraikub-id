@@ -4,6 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { IoAlertCircle } from "react-icons/io5";
 import { MuiPaperSx } from "../../../styles/mui/custom-mui-sx";
 import { LinkWrap } from "../link/LinkWrap";
+import { PaperSection } from "../section/PaperSection";
 
 interface Menu extends Choice {
   mark?: string;
@@ -24,7 +25,7 @@ export const Menu: FC<Menu> = (props) => {
   return (
 
     <LinkWrap href={props.href}>
-      <Paper
+      <PaperSection
         sx={{
           p: "18px",
           height: "60px",
@@ -33,6 +34,8 @@ export const Menu: FC<Menu> = (props) => {
           alignItems: "center",
           cursor: "pointer",
           ...MuiPaperSx.disableBorderRadiusOnMobile,
+          borderStyle: "solid",
+          borderColor: theme.palette.divider,
           "&:hover": {
             backgroundColor: theme.palette.secondary.light,
           },
@@ -50,7 +53,7 @@ export const Menu: FC<Menu> = (props) => {
           {whichIcon(props.mark)}
           <IoIosArrowForward />
         </Stack>
-      </Paper>
+      </PaperSection>
     </LinkWrap>
   );
 };

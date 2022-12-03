@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import { NextPage } from "next";
 import Head from "next/head";
-import { AppBar } from "../../layouts/AppBar";
+import { AppBar } from "../../layouts/appbar/AppBar";
 import { Menu } from "../../layouts/ui/menu/Menu";
 import { MobileSaveSection } from "../../layouts/ui/section/MobileSaveSection";
 import { PageHeading } from "../../layouts/ui/Text/PageHeading";

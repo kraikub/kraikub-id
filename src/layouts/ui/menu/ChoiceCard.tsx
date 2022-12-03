@@ -11,6 +11,7 @@ import { FC, ReactNode } from "react";
 import { MuiPaperSx } from "../../../styles/mui/custom-mui-sx";
 import { LinkWrap } from "../link/LinkWrap";
 import { MobileSaveSection } from "../section/MobileSaveSection";
+import { PaperSection } from "../section/PaperSection";
 
 interface ChoiceCardProps {
   title: string;
@@ -37,11 +38,13 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
           {props.title}
         </Typography>
       </MobileSaveSection>
-      <Paper
+      <PaperSection
         sx={{
           overflow: "hidden",
           padding: 0,
           ...MuiPaperSx.disableBorderRadiusOnMobile,
+          borderStyle: "solid",
+          borderColor: theme.palette.divider
         }}
       >
         <Box
@@ -93,7 +96,7 @@ export const ChoiceCard: FC<ChoiceCardProps> = (props) => {
             );
           })}
         </Stack>
-      </Paper>
+      </PaperSection>
     </Box>
   );
 };

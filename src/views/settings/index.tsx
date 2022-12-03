@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import { AppBar } from "../../layouts/AppBar";
+import { AppBar } from "../../layouts/appbar/AppBar";
 import { PageHeading } from "../../layouts/ui/Text/PageHeading";
 import { ThemeSelector } from "./components/ThemeSelector";
 
