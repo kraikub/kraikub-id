@@ -23,7 +23,6 @@ export const Menu: FC<Menu> = (props) => {
   };
 
   return (
-
     <LinkWrap href={props.href}>
       <PaperSection
         sx={{
@@ -41,14 +40,7 @@ export const Menu: FC<Menu> = (props) => {
           },
         }}
       >
-        <Typography
-          sx={{
-            fontSize: 14,
-            fontWeight: 500,
-          }}
-        >
-          {props.text}
-        </Typography>
+        <Typography>{props.text}</Typography>
         <Stack direction="row" alignItems="center" spacing={3}>
           {whichIcon(props.mark)}
           <IoIosArrowForward />

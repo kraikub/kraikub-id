@@ -12,7 +12,7 @@ export const PageHeading: FC<PageHeadingProps> = (props) => {
       mb: "20px",
     }}>
       <MobileSaveSection>
-        <Typography variant="h6" className="letter-spacing-1">
+        <Typography variant="h5" className="letter-spacing-1">
           {props.children}
         </Typography>
       </MobileSaveSection>

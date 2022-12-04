@@ -27,7 +27,7 @@ export const lightTheme = createTheme({
       paper: "#ffffff",
     },
     text: {
-      primary: "#1a1a1a",
+      primary: "#262626",
     },
     divider: "#e6e6e6",
   },

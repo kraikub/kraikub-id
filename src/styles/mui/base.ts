@@ -4,29 +4,25 @@ const kraikubBaseTheme = createTheme({
     borderRadius: 12,
   },
   typography: {
-    fontFamily: `'Poppins','Kanit', sans-serif`,
+    fontFamily: `'Inter', sans-serif`,
     fontSize: 16,
     h1: {
-      fontWeight: 600,
-      letterSpacing: "-2px",
+      fontWeight: 500,
     },
     h2: {
-      fontWeight: 600,
-      letterSpacing: "-2px",
+      fontWeight: 500,
     },
     h3: {
-      fontWeight: 600,
-      letterSpacing: "-2px",
+      fontWeight: 500,
     },
     h4: {
-      fontWeight: 600,
-      letterSpacing: "-1px",
+      fontWeight: 500,
     },
     h5: {
-      fontWeight: 600,
+      fontWeight: 500,
     },
     h6: {
-      fontWeight: 600,
+      fontWeight: 500,
     },
     body1: {
       fontWeight: 400,
@@ -34,11 +30,11 @@ const kraikubBaseTheme = createTheme({
     },
     body2: {
       fontWeight: 400,
-      fontSize: 14,
+      fontSize: 16,
       opacity: 0.7
     },
     button: {
-      fontSize: 12,
+      fontSize: 16,
       fontWeight: 500,
     },
   },

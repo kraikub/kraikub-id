@@ -20,7 +20,7 @@ export const AccountPage: NextPage = () => {
         <title>Your Kraikub ID</title>
       </Head>
       <AppBar>
-        <PageHeading>Your Kraikub ID</PageHeading>
+        <PageHeading>Account</PageHeading>
         <ProfilePic />
         <Stack
           spacing={5}

@@ -9,12 +9,14 @@ interface PaperSectionProps {
 
 export const PaperSection: FC<PaperSectionProps> = (props) => {
   return (
-    <Paper sx={{
-      ...MuiPaperSx.disableBorderRadiusOnMobile,
-      ...MuiPaperSx.disableBorderXOnMobile,
-      ...props.sx
-    }}>
+    <Paper
+      sx={{
+        ...MuiPaperSx.disableBorderRadiusOnMobile,
+        ...MuiPaperSx.disableBorderXOnMobile,
+        ...props.sx,
+      }}
+    >
       {props.children}
     </Paper>
-  )
-}
+  );
+};

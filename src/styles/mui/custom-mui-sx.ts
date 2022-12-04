@@ -4,7 +4,7 @@ export const MuiPaperSx = {
     borderRadius: {
       xs: 0,
       sm: 0,
-      md: "12px",
+      md: "8px",
     },
   },
   disableBorderXOnMobile: {

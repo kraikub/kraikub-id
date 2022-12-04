@@ -37,12 +37,12 @@ const mainMenus: Menu[] = [
     text: "Account",
     href: "/account",
     icon: <MdAccountCircle />,
+    iconSize: '24px'
   },
   {
     text: "Security",
     href: "/security",
     icon: <BiLockAlt />,
-    iconSize: "20px",
   },
   {
     text: "Profile Gallery",
@@ -53,13 +53,11 @@ const mainMenus: Menu[] = [
     text: "Activities",
     href: "/oauth2-activities",
     icon: <AiOutlineHistory />,
-    iconSize: "20px",
   },
   {
     text: "Settings",
     href: "/settings",
     icon: <IoSettingsOutline />,
-    iconSize: "20px",
   },
 ];
 
@@ -75,13 +73,11 @@ const externalLinks = [
     text: "Dev",
     href: "https://app.kraikub.com/projects/manager",
     icon: <TbCode />,
-    iconSize: "20px",
   },
   {
     text: "Install",
     href: "/install",
     icon: <FiDownload />,
-    iconSize: "20px",
   },
 ];
 
@@ -114,8 +110,8 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
         sx={{
           display: router.pathname === href ? "block" : "none",
           position: "absolute",
-          top: "25%",
-          bottom: "25%",
+          top: "5%",
+          bottom: "5%",
           left: 0,
           width: "4px",
           borderRadius: "0 3px 3px 0",
@@ -130,16 +126,16 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
           overflow: "hidden",
           textTransform: "none",
           backgroundColor: "transparent",
-          fontSize: 14,
-          fontWeight: 500,
+          fontSize: 16,
+          fontWeight:
+            router.pathname === href
+              ? 600
+              : 400,
           paddingX: "10px",
           textAlign: "start",
           alignItems: "center",
           height: "50px",
-          color:
-            router.pathname === href
-              ? theme.palette.text.primary
-              : theme.palette.text.secondary,
+          color: theme.palette.text.primary,
           "&:hover": {
             backgroundColor: theme.palette.secondary.main,
           },
@@ -149,17 +145,17 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
         <Grid container>
           <Grid
             item
-            xs={1}
+            xs={2}
             sx={{
               ...gridButtonStyles,
-              fontSize: iconSize || "20px",
+              fontSize: iconSize || "22px",
             }}
           >
             {icon}
           </Grid>
           <Grid
             item
-            xs={11}
+            xs={10}
             sx={{
               ...gridButtonStyles,
               pl: "20px",
@@ -238,7 +234,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
   return (
     <Box
       sx={{
-        background: `linear-gradient(#191b1f04, #191b1f04), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
+        background: `linear-gradient(#191b1f08, #191b1f08), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
       }}
     >
       {/* Bottom bar in moblie */}
