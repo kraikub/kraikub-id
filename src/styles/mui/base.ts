@@ -1,10 +1,10 @@
 import { createTheme } from "@mui/material";
 const kraikubBaseTheme = createTheme({
   shape: {
-    borderRadius: 12,
+    borderRadius: 6,
   },
   typography: {
-    fontFamily: `'Inter', sans-serif`,
+    fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
     fontSize: 16,
     h1: {
       fontWeight: 500,
@@ -31,15 +31,16 @@ const kraikubBaseTheme = createTheme({
     body2: {
       fontWeight: 400,
       fontSize: 16,
-      opacity: 0.7
+      opacity: 0.7,
     },
     button: {
       fontSize: 16,
       fontWeight: 500,
+      textTransform: "none",
     },
   },
   shadows: [
-    "none", 
+    "none",
     "0 3px 3px #00000018",
     "0 3px 4px #00000028",
     "0 3px 5px #00000038",
@@ -74,7 +75,7 @@ const kraikubBaseTheme = createTheme({
       styleOverrides: {
         sizeLarge: {
           fontSize: 14,
-          height: "46px"
+          height: "46px",
         },
       },
     },
@@ -94,10 +95,9 @@ const kraikubBaseTheme = createTheme({
           padding: "18px",
           backdropFilter: "blur(14px)",
         },
-        
       },
     },
   },
 });
 
-export default kraikubBaseTheme
+export default kraikubBaseTheme;

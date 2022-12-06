@@ -1,10 +1,9 @@
-import { BsBorderWidth } from 'react-icons/bs';
 export const MuiPaperSx = {
   disableBorderRadiusOnMobile: {
     borderRadius: {
       xs: 0,
       sm: 0,
-      md: "8px",
+      md: "14px",
     },
   },
   disableBorderXOnMobile: {
@@ -14,4 +13,8 @@ export const MuiPaperSx = {
       md: "1px",
     },
   }
+}
+
+export const CustomInputSx = {
+  py: "4px",
 }

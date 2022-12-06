@@ -27,7 +27,7 @@ const themeSwitcher = (t: AllowedTheme): Theme => {
 };
 
 const ThemeContext = createContext({
-  theme: "dark",
+  theme: "light",
   changeTheme: (t: AllowedTheme) => {},
 });
 
@@ -48,7 +48,7 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
     if (t && allowedThemes.includes(t)) {
       setTheme(t as AllowedTheme);
     } else {
-      setTheme("dark");
+      setTheme("light");
     }
   }, []);
 

@@ -1,43 +1,32 @@
-import { Typography } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Box, Container, Typography } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
 import { AppBar } from "../../layouts/appbar/AppBar";
-import { Menu } from "../../layouts/ui/menu/Menu";
-import { MobileSaveSection } from "../../layouts/ui/section/MobileSaveSection";
+import { MultiSection } from "../../layouts/ui/section/MultiSection";
 import { PageHeading } from "../../layouts/ui/Text/PageHeading";
-import { AppActivities } from "./components/AppActivities";
-import { Education } from "./components/Education";
-import { General } from "./components/General";
-import { ProfilePic } from "./components/ProfilePic";
-import { Suggestions } from "./components/Suggestions";
+import { Notification } from "./components/Notification";
+import { Profile } from "./components/Profile";
 import { UseSuggestionEmail } from "./components/UseSuggestionEmail";
 
 export const AccountPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Your Kraikub ID</title>
+        <title>Account</title>
       </Head>
       <AppBar>
-        <PageHeading>Account</PageHeading>
-        <ProfilePic />
-        <Stack
-          spacing={5}
-          sx={{
-            my: 4,
-          }}
-        >
-          {/* <General /> */}
-          <Menu
-            text="Verify your @ku.th email"
-            mark="important"
-            href="/verify/university-email"
-          />
-          <UseSuggestionEmail suggestedEmail="beamuonly@gmail.com" />
-          {/* <Education /> */}
-          <AppActivities />
-        </Stack>
+        <MultiSection>
+          <Box>
+            <PageHeading>Your account</PageHeading>
+            <Typography>These describe your account on Kraikub.</Typography>
+          </Box>
+          <Container maxWidth="sm">
+            <Profile />
+          </Container>
+          <Box>
+            <Notification />
+          </Box>
+        </MultiSection>
       </AppBar>
     </>
   );

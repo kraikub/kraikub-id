@@ -34,10 +34,10 @@ type Menu = {
 
 const mainMenus: Menu[] = [
   {
-    text: "Account",
+    text: "Account settings",
     href: "/account",
     icon: <MdAccountCircle />,
-    iconSize: '24px'
+    iconSize: "24px",
   },
   {
     text: "Security",
@@ -55,7 +55,7 @@ const mainMenus: Menu[] = [
     icon: <AiOutlineHistory />,
   },
   {
-    text: "Settings",
+    text: "App settings",
     href: "/settings",
     icon: <IoSettingsOutline />,
   },
@@ -126,11 +126,9 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
           overflow: "hidden",
           textTransform: "none",
           backgroundColor: "transparent",
+          borderRadius: "1000px",
           fontSize: 16,
-          fontWeight:
-            router.pathname === href
-              ? 600
-              : 400,
+          fontWeight: router.pathname === href ? 600 : 400,
           paddingX: "10px",
           textAlign: "start",
           alignItems: "center",
@@ -259,8 +257,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             zIndex: 39,
           }}
         >
-          <Stack direction="row" alignItems="center" spacing="5px">
-          </Stack>
+          <Stack direction="row" alignItems="center" spacing="5px"></Stack>
           <Stack direction="row" spacing="12px">
             <Button
               onClick={() => setOpenMenuModal(true)}
@@ -356,15 +353,22 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               </Box>
             );
           })}
-          <Box sx={{
-            px: "8px",
-            width: "100%",
-          }}>
-            <Button size="large" color="secondary" variant="contained" sx={{
+          <Box
+            sx={{
+              px: "8px",
               width: "100%",
-              gap: 1,
-              textTransform: "none",
-            }}>
+            }}
+          >
+            <Button
+              size="large"
+              color="secondary"
+              variant="contained"
+              sx={{
+                width: "100%",
+                gap: 1,
+                textTransform: "none",
+              }}
+            >
               <FiLogOut /> Log out
             </Button>
           </Box>
@@ -405,7 +409,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             height: "100vh",
             backgroundColor: theme.palette.background.default,
             backgroundImage: "none",
-            px: "8px",
+            pl: "0",
           },
         }}
         onClose={() => setOpenMenuModal(false)}
@@ -413,7 +417,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
         <Box
           sx={{
             py: "20px",
-            px: "10px",
+            px: "0",
             display: "flex",
             justifyContent: "end",
           }}
@@ -438,7 +442,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             <IoIosArrowDown />
           </Button>
         </Box>
-        <Container>
           <Stack>
             <Stack spacing={4}>
               {groups.map((g, index) => {
@@ -465,7 +468,6 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               })}
             </Stack>
           </Stack>
-        </Container>
       </Drawer>
     </Box>
   );

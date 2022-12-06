@@ -1,13 +1,13 @@
 import {
   Box,
   Button,
-  Card,
-  Divider,
-  Paper,
+  Stack,
+  TextField,
   Typography,
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
+import { Input } from "../../../layouts/ui/input/Input";
 import { ChoiceCard } from "../../../layouts/ui/menu/ChoiceCard";
 
 interface UseSuggestionEmailProps {
@@ -19,40 +19,32 @@ export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
 }) => {
   const theme = useTheme();
 
-  const bodyText = (
-    <>
-      <Typography
-        variant="body2"
-        sx={{
-          color: theme.palette.text.primary,
-        }}
-      >
-        Your personal email was not set. Do you want to use
+  return (
+    <Stack spacing={2}>
+      <Input inputProps={{ placeholder: "Email" }} />
+      <Typography variant="body2" fontSize={12} fontWeight={500}>
+        Email will be used for enabling Two Factor Authentication (2FA)
+        features, and receive notifications from Kraikub. We recommended you not
+        to use @ku.th email for safety reasons.
+      </Typography>
         <Typography
-          component="span"
+          variant="body2"
+          fontSize={12}
           color={theme.palette.info.main}
-          fontSize="inherit"
-          fontWeight={600}
           sx={{
-            display: "inline",
+            "&:hover": {
+              textDecoration: "underline",
+              cursor: "pointer",
+            }
           }}
         >
-          {" "}
-          {suggestedEmail}{" "}
+          <strong>Email suggestion: {suggestedEmail}</strong>
         </Typography>
-        as your personal email?
-      </Typography>
-    </>
+      <Stack direction="row" spacing={1}>
+        <Button variant="contained" size="small" color="secondary">
+          Verify my email
+        </Button>
+      </Stack>
+    </Stack>
   );
-
-  const choice = [
-    {
-      text: "No, I'll choose by own.",
-    },
-    {
-      text: "Yes",
-    },
-  ]
-
-  return <ChoiceCard title="PERSONAL EMAIL" description={bodyText} choice={choice}/>;
 };

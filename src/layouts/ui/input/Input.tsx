@@ -7,7 +7,7 @@ import {
   Stack,
   useTheme,
 } from "@mui/material";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
 interface InputProps {
@@ -18,14 +18,20 @@ interface InputProps {
 
 export const Input: FC<InputProps> = (props) => {
   const theme = useTheme();
+  const [focus, setFocus] = useState(false);
   return (
-    <Paper
+    <Box
       sx={{
         px: "12px",
-        py: "10px",
+        borderRadius: "4px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        borderStyle: "solid",
+        borderColor: focus ? theme.palette.info.main : theme.palette.divider,
+        borderWidth: focus ? "2px" : "1px",
+        boxSizing: "border-box",
+        height: "34px",
       }}
     >
       <Stack
@@ -50,10 +56,12 @@ export const Input: FC<InputProps> = (props) => {
         ) : null}
 
         <InputBase
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           sx={{
             width: "100%",
             fontSize: 16,
-            fontWeight: 500,
+            height: "34px",
             color: theme.palette.text.primary,
           }}
           {...props.inputProps}
@@ -76,6 +84,6 @@ export const Input: FC<InputProps> = (props) => {
           </IconButton>
         </Box>
       ) : null}
-    </Paper>
+    </Box>
   );
 };

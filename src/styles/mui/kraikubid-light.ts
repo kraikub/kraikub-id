@@ -29,6 +29,6 @@ export const lightTheme = createTheme({
     text: {
       primary: "#262626",
     },
-    divider: "#e6e6e6",
+    divider: "#dee0e3",
   },
 });
