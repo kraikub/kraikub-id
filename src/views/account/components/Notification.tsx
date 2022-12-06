@@ -1,5 +1,6 @@
-import { Box, Grid, Stack, Switch, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import { FC, ReactNode } from "react";
+import { IOSSwitch } from "../../../layouts/ui/input/IosSwitch";
 
 interface EachNotificationGridProps {
   children?: ReactNode;
@@ -20,7 +21,7 @@ const EachNotificationGrid: FC<EachNotificationGridProps> = (props) => {
           justifyContent: "end",
         }}
       >
-        <Switch color="info" />
+        <IOSSwitch />
       </Grid>
     </Grid>
   );
