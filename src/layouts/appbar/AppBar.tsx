@@ -128,7 +128,7 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
             backgroundColor: theme.palette.secondary.main,
           },
         }}
-        onClick={() => router.push(href)}
+        onClick={() => router.push(href, href, { locale: router.locale })}
       >
         <Grid container>
           <Grid
@@ -354,6 +354,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               color="secondary"
               variant="contained"
               sx={{
+                borderRadius: 100,
                 width: "100%",
                 gap: 1,
                 textTransform: "none",

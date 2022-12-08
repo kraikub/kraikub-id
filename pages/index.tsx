@@ -8,13 +8,15 @@ import {
   Paper,
 } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { FiArrowRight } from "react-icons/fi";
 
 export default function Home() {
+  const { locale, push } = useRouter()
   useEffect(() => {
     setTimeout(() => {
-      location.href = "/account";
+      push("/account", "/account", { locale: locale })
     }, 2000);
   }, []);
 

@@ -9,6 +9,11 @@ const withPWA = require('next-pwa')({
 const nextConfig = withPWA({
   reactStrictMode: true,
   swcMinify: true,
+  i18n: {
+    locales: ["th", "en-US"],
+    defaultLocale: "th",
+    localeDetection: true,
+  }
 })
 
 module.exports = nextConfig
