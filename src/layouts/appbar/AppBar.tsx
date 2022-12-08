@@ -40,16 +40,6 @@ const mainMenus: Menu[] = [
     iconSize: "24px",
   },
   {
-    text: "Security",
-    href: "/security",
-    icon: <BiLockAlt />,
-  },
-  {
-    text: "Profile Gallery",
-    href: "/profile-gallery",
-    icon: <BsImage />,
-  },
-  {
     text: "Activities",
     href: "/oauth2-activities",
     icon: <AiOutlineHistory />,
@@ -70,7 +60,7 @@ const gridButtonStyles = {
 
 const externalLinks = [
   {
-    text: "Dev",
+    text: "Developers",
     href: "https://app.kraikub.com/projects/manager",
     icon: <TbCode />,
   },

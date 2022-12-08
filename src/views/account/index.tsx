@@ -6,6 +6,7 @@ import { MultiSection } from "../../layouts/ui/section/MultiSection";
 import { PageHeading } from "../../layouts/ui/Text/PageHeading";
 import { Notification } from "./components/Notification";
 import { Profile } from "./components/Profile";
+import { TwoFactor } from "./components/TwoFactor";
 import { UseSuggestionEmail } from "./components/UseSuggestionEmail";
 
 export const AccountPage: NextPage = () => {
@@ -25,6 +26,9 @@ export const AccountPage: NextPage = () => {
           </Container>
           <Box>
             <Notification />
+          </Box>
+          <Box>
+            <TwoFactor />
           </Box>
         </MultiSection>
       </AppBar>

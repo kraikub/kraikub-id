@@ -24,7 +24,7 @@ export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
       <Input inputProps={{ placeholder: "Email" }} />
       <Typography variant="body2" fontSize={12} fontWeight={500}>
         Email will be used for enabling Two Factor Authentication (2FA)
-        features, and receive notifications from Kraikub. We recommended you not
+        features, and receive notifications from Kraikub. We recommend you not
         to use @ku.th email for safety reasons.
       </Typography>
         <Typography
