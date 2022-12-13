@@ -23,6 +23,7 @@ WORKDIR /kraikubid
 COPY --from=builder /kraikubid/next.config.js ./
 COPY --from=builder /kraikubid/public ./public
 COPY --from=builder /kraikubid/.next ./.next
+COPY --from=builder /kraikubid/next-i18next.config.js ./next-i18next.config.js
 COPY --from=builder /kraikubid/node_modules ./node_modules
 COPY --from=builder /kraikubid/package.json ./package.json
 
