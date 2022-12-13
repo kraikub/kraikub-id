@@ -3,7 +3,9 @@ import { Box, Typography } from "@mui/material";
 export const Analytic = () => {
   return (
     <Box>
-      <Typography variant="body1" fontSize={12}>
+      <Typography variant="body1" fontSize={12} sx={{
+        textTransform: "uppercase"
+      }}>
         <strong>Your last 30 days sign in activities</strong>
       </Typography>
       <Box

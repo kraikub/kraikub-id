@@ -1,6 +1,9 @@
 import { Grid, Stack, SxProps, Theme, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { t } from "i18next";
 import { FC, ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { useUser } from "../../../contexts/User";
 import { CustomInputSx } from "../../../styles/mui/custom-mui-sx";
 import { UseSuggestionEmail } from "./UseSuggestionEmail";
 
@@ -51,7 +54,15 @@ const EachGrid: FC<EachGridProps> = (props) => {
   );
 };
 
-export const Profile = () => {
+
+export const Profile: FC = () => {
+  const { user: u } = useUser()
+  const { t } = useTranslation("common")
+
+  if (!u) {
+    return null;
+  }
+
   return (
     <Stack
       spacing={4}
@@ -65,7 +76,7 @@ export const Profile = () => {
           <Box
             sx={{
               width: "46px",
-              backgroundImage: `url(/resources/default-profile.png)`,
+              backgroundImage: `url(${u.profileImageUrl || "/resources/default-profile.png"})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               borderRadius: "600px",
@@ -77,7 +88,7 @@ export const Profile = () => {
       >
         <Box>
           <Typography variant="h6" fontSize={14}>
-            MR. NUTCHANON CHANTRASUP
+            {u.student.nameEn}
           </Typography>
           <Typography
             sx={{
@@ -86,22 +97,22 @@ export const Profile = () => {
               opacity: 0.7,
             }}
           >
-            นาย ณัฐชนน จันทรศัพท์
+            {u.student.nameTh}
           </Typography>
         </Box>
       </EachGrid>
 
       <EachGrid
-        title="Email"
+        title={t("Email")}
         gridTitleProps={{
           py: CustomInputSx.py,
         }}
       >
-        <UseSuggestionEmail suggestedEmail="beamuonly@gmail.com" />
+        <UseSuggestionEmail suggestedEmail={u.student.email} />
       </EachGrid>
 
-      <EachGrid title="Joined date">
-        <Typography>{new Date().toLocaleString()}</Typography>
+      <EachGrid title={t('Joined date')}>
+        <Typography>{new Date(u.createdAt).toString()}</Typography>
       </EachGrid>
     </Stack>
   );

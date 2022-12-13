@@ -19,7 +19,10 @@ import { Activities } from "./components/Activities";
 import { Analytic } from "./components/Analytic";
 import { Devices } from "./components/Devices";
 
-export const OAuthActivities: NextPage = () => {
+export const OAuthActivities: NextPage<OAuthActivitiesProps> = ({
+  accesses,
+  logs,
+}) => {
   const theme = useTheme();
 
   return (
@@ -32,15 +35,10 @@ export const OAuthActivities: NextPage = () => {
           <MultiSection>
             <Box>
               <PageHeading>Sign in activities</PageHeading>
-              <Typography>
-                {" "}
-                Sign in activities of{" "}
-                <strong>{"MR. NUTCHANON CHANTRASUP"}</strong> account.
-              </Typography>
             </Box>
             <Analytic />
-            <Devices />
-            <Activities />
+            <Devices logs={logs}/>
+            <Activities accesses={accesses} />
           </MultiSection>
         </Box>
       </AppBar>

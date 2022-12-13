@@ -1,9 +1,10 @@
 import "../src/styles/css/globals.css";
 import type { AppProps } from "next/app";
 import { AppThemeProvider } from "../src/contexts/AppTheme";
+import { appWithTranslation } from 'next-i18next'
 import Head from "next/head";
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -17,3 +18,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export default appWithTranslation(App)

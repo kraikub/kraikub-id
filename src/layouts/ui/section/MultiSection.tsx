@@ -1,4 +1,4 @@
-import { Box, Divider, Paper, useTheme } from "@mui/material";
+import { Box, Container, Divider, Paper, useTheme } from "@mui/material";
 import { FC, ReactNode } from "react";
 import { MuiPaperSx } from "../../../styles/mui/custom-mui-sx";
 
@@ -22,13 +22,11 @@ export const MultiSection: FC<MultiSectionProps> = (props) => {
         props.children.map((node, index) => {
           return (
             <Box key={`multi-section-node-${index}`}>
-              <Box
-                sx={{
-                  padding: "18px",
-                }}
-              >
+              <Container maxWidth="md" sx={{
+                py: "20px",
+              }}>
                 {node}
-              </Box>
+              </Container>
               {index === (props.children as ReactNode[]).length - 1 ? null : (
                 <Divider />
               )}

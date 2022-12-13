@@ -6,7 +6,9 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { t } from "i18next";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { Input } from "../../../layouts/ui/input/Input";
 import { ChoiceCard } from "../../../layouts/ui/menu/ChoiceCard";
 
@@ -17,15 +19,14 @@ interface UseSuggestionEmailProps {
 export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
   suggestedEmail,
 }) => {
+  const { t } = useTranslation(["account", "common"])
   const theme = useTheme();
 
   return (
     <Stack spacing={2}>
-      <Input inputProps={{ placeholder: "Email" }} />
+      <Input inputProps={{ placeholder: t("common:Email") || "" }} />
       <Typography variant="body2" fontSize={12} fontWeight={500}>
-        Email will be used for enabling Two Factor Authentication (2FA)
-        features, and receive notifications from Kraikub. We recommend you not
-        to use @ku.th email for safety reasons.
+        {t("UseSuggestionEmail.email-description")}
       </Typography>
         <Typography
           variant="body2"
@@ -38,11 +39,11 @@ export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
             }
           }}
         >
-          <strong>Email suggestion: {suggestedEmail}</strong>
+          <strong>{t('UseSuggestionEmail.email-suggestion')}: {suggestedEmail}</strong>
         </Typography>
       <Stack direction="row" spacing={1}>
         <Button variant="contained" size="small" color="secondary">
-          Verify my email
+          {t('UseSuggestionEmail.verify-email')}
         </Button>
       </Stack>
     </Stack>

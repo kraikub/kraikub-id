@@ -1,0 +1,14 @@
+{
+  "index.page-heading": "บัญชีของคุณ",
+  "index.page-description": "ข้อมูลเกี่ยวกับบัญชีของคุณ",
+  "UseSuggestionEmail.email-description": "อีเมลจะถูกใช้เพื่อเปิดใช้งานฟีเจอร์ \"ความปลอดภัยสองชั้น (2FA)\" และรับการแจ้งเตือนการเข้าสู่ระบบ เราไม่แนะนำให้คุณใช้อีเมล @ku.th เพื่อความปลอดภัย",
+  "UseSuggestionEmail.email-suggestion": "อีเมลแนะนำ",
+  "UseSuggestionEmail.verify-email": "ยืนยันอีเมล",
+  "Notification.heading": "การแจ้งเตือนผ่านอีเมล",
+  "Notification.when-sign-in": "เมื่อเข้าสู่ระบบสำเร็จ",
+  "Notification.when-sign-in-description": "การแจ้งเตือนจะถูกส่งต่อเมื่อแอปพลิเคชันที่คุณลงชื่อเข้าใช้ได้อ้างสิทธิ์ในการเข้าถึงข้อมูลส่วนบุคคลของคุณสำเร็จแล้วเท่านั้น",
+  "Notification.when-news": "อัปเดตและข่าวสารจาก Kraikub",
+  "TwoFactor.heading": "ความปลอดภัยสองชั้น (2FA)",
+  "TwoFactor.enable": "เปิดใช้งานความปลอดภัยสองชั้น",
+  "TwoFactor.enable-description": "รหัส 6 หลักจะถูกส่งไปยังกล่องจดหมายอีเมลของคุณทุกครั้งที่คุณพยายามลงชื่อเข้าใช้แอป เราขอแนะนำให้คุณเปิดใช้งานคุณสมบัตินี้"
+}
