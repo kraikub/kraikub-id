@@ -14,6 +14,7 @@ interface AccountPageProps {
   u: UserWithStudent | null;
 }
 
+
 export const AccountPage: NextPage<AccountPageProps> = (props) => {
   const { t } = useTranslation(["account"])
   return (
