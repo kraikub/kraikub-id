@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-image": "sh docker-build.sh"
+    "build-image": "sh ./scripts/docker-build.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
