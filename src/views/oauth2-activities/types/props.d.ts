@@ -24,7 +24,7 @@ interface ReducedAccess {
     creatorName: string;
     createdAt: string;
     updatedAt: string;
-  };
+  }[];
 }
 
 interface OAuthActivitiesProps {

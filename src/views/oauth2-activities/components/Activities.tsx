@@ -94,10 +94,10 @@ export const Activities: FC<ActivitiesProps> = ({ accesses }) => {
                         borderRadius: "6px",
                       }}
                     >
-                      {l.application.appName[0]}
+                      {l.application[0].appName[0]}
                     </Avatar>
                     <Typography fontWeight={500}>
-                      {l.application.appName}
+                      {l.application[0].appName}
                     </Typography>
                   </Stack>
                 </AccordionSummary>

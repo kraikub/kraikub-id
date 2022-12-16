@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const pipeline = [
     {
       $match: {
-        uid: "7aa9d883290077be4999f36252a0c61fbd603acf3a51adc4f724544525d503e2",
+        uid: uid,
       },
     },
     {
@@ -54,11 +54,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         localField: "accesses.clientId",
         foreignField: "clientId",
         as: "accesses.application",
-      },
-    },
-    {
-      $unwind: {
-        path: "$accesses.application",
       },
     },
     {
@@ -98,7 +93,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   ];
 
-  const res = await UserModel.aggregate(pipeline);
+  let res = await UserModel.aggregate(pipeline);
+
   if (!res.length) {
     return {
       redirect: {
@@ -110,6 +106,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
+
+  let data = res[0]
+  data.accesses = data.accesses.filter((e: any) => {
+    return e.accessId;
+  })
 
   return {
     props: {
