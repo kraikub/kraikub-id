@@ -1,24 +1,13 @@
 import {
   Box,
   Container,
-  Typography,
   Stack,
-  Button,
-  Skeleton,
-  Paper,
+  Typography,
 } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { FiArrowRight } from "react-icons/fi";
 
 export default function Home() {
-  const { locale, push } = useRouter()
-  useEffect(() => {
-    setTimeout(() => {
-      push("/account", "/account", { locale: locale })
-    }, 2000);
-  }, []);
+  const { push } = useRouter()
 
   return (
     <Box
@@ -38,7 +27,7 @@ export default function Home() {
         }}
       >
         <Stack spacing={2} alignItems="center" textAlign="center">
-          <Paper
+          {/* <Paper
             className="spin"
             elevation={4}
             sx={{
@@ -51,7 +40,9 @@ export default function Home() {
             }}
           >
             <img src="/resources/kraikub-logo-transparent.png" width={60} />
-          </Paper>
+          </Paper> */}
+          <Typography variant="h5">อดใจรออีกนิด</Typography>
+          <Typography>เราทำคนเดียวนะ แค่นี้ก็ถือว่าเร็วแล้ว - beam</Typography>
         </Stack>
       </Container>
     </Box>

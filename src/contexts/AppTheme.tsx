@@ -6,9 +6,9 @@ import { lightTheme } from "../styles/mui/kraikubid-light";
 import { lunarTheme } from "../styles/mui/kraikubid-lunar";
 import { naturalTheme } from "../styles/mui/kraikubid-natural";
 
-type AllowedTheme = "light" | "dark" | "lunar" | "natural";
+type AllowedTheme = "light" | "dark";
 
-const allowedThemes = ["light", "dark", "lunar", "natural"];
+const allowedThemes = ["light", "dark"];
 
 type AppThemeProviderProps = {
   children: any;
@@ -17,11 +17,9 @@ type AppThemeProviderProps = {
 const themeSwitcher = (t: AllowedTheme): Theme => {
   if (t === "light") return lightTheme;
   else if (t === "dark") return darkTheme;
-  else if (t === "lunar") return lunarTheme;
-  else if (t === "natural") return naturalTheme;
   else {
-    // default theme is considered as "dark"
-    localStorage.setItem("app-theme", "dark");
+    // default theme is considered as "light"
+    localStorage.setItem("app-theme", "light");
     return darkTheme;
   }
 };

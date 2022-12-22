@@ -9,6 +9,7 @@ import {
 import { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IoIosArrowDown } from "react-icons/io";
 import { AppBar } from "../../layouts/appbar/AppBar";
 import { MobileSaveSection } from "../../layouts/ui/section/MobileSaveSection";
@@ -24,19 +25,19 @@ export const OAuthActivities: NextPage<OAuthActivitiesProps> = ({
   logs,
 }) => {
   const theme = useTheme();
-
+  const { t } = useTranslation("activities")
   return (
     <>
       <Head>
-        <title>Account Activities</title>
+        <title>{t("page-header")}</title>
       </Head>
       <AppBar>
         <Box>
           <MultiSection>
             <Box>
-              <PageHeading>Sign in activities</PageHeading>
+              <PageHeading>{t("page-header")}</PageHeading>
             </Box>
-            <Analytic />
+            {/* <Analytic /> */}
             <Devices logs={logs}/>
             <Activities accesses={accesses} />
           </MultiSection>

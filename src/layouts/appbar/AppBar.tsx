@@ -24,6 +24,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiDownload, FiLogOut } from "react-icons/fi";
 import { GithubBanner } from "../../components/banners/Github";
 import { SquareIconButton } from "../../components/buttons/SquareIconButton";
+import { useTranslation } from "react-i18next";
 
 type Menu = {
   text: string | ReactNode;
@@ -32,58 +33,12 @@ type Menu = {
   iconSize?: string;
 };
 
-const mainMenus: Menu[] = [
-  {
-    text: "Account settings",
-    href: "/account",
-    icon: <MdAccountCircle />,
-    iconSize: "24px",
-  },
-  {
-    text: "Activities",
-    href: "/oauth2-activities",
-    icon: <AiOutlineHistory />,
-  },
-  {
-    text: "App settings",
-    href: "/settings",
-    icon: <IoSettingsOutline />,
-  },
-];
-
 const gridButtonStyles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   height: "60px",
 };
-
-const externalLinks = [
-  {
-    text: "Developers",
-    href: "https://app.kraikub.com/projects/manager",
-    icon: <TbCode />,
-  },
-  {
-    text: "Install",
-    href: "/install",
-    icon: <FiDownload />,
-  },
-];
-
-const externalLinkGroup = [
-  {
-    name: "",
-    list: externalLinks,
-  },
-];
-
-const groups = [
-  {
-    name: "",
-    list: mainMenus,
-  },
-];
 
 const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
   const theme = useTheme();
@@ -100,12 +55,12 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
         sx={{
           display: router.pathname === href ? "block" : "none",
           position: "absolute",
-          top: "5%",
-          bottom: "5%",
+          top: "25%",
+          bottom: "25%",
           left: 0,
-          width: "4px",
-          borderRadius: "0 3px 3px 0",
-          backgroundColor: theme.palette.primary.main,
+          width: "5px",
+          borderRadius: "0 20px 20px 0",
+          backgroundColor: theme.palette.info.main,
         }}
       ></Box>
       <Button
@@ -115,8 +70,11 @@ const Menu: FC<Menu> = ({ text, href, icon, iconSize }) => {
           width: "100%",
           overflow: "hidden",
           textTransform: "none",
-          backgroundColor: "transparent",
-          borderRadius: "1000px",
+          backgroundColor:
+            router.pathname === href
+              ? theme.palette.secondary.main
+              : "transparent",
+          borderRadius: "14px",
           fontSize: 16,
           fontWeight: router.pathname === href ? 600 : 400,
           paddingX: "10px",
@@ -166,12 +124,53 @@ interface AppBarProps {
 export const AppBar: FC<AppBarProps> = ({ children }) => {
   const theme = useTheme();
   const router = useRouter();
+  const { t } = useTranslation("appbar");
   const [rightSideBanner, setRightSideBanner] = useState(false);
   const scrollRef = useRef<number>(0);
   const dimensionY = useRef<number>(0);
   const mdSize = useMediaQuery(theme.breakpoints.up("md"));
   const [showDynamicNav, setShowDynamicNav] = useState<boolean>(true);
   const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
+
+  const externalLinks = [
+    {
+      text: t("extra-developers"),
+      href: "https://app.kraikub.com/projects/manager",
+      icon: <TbCode />,
+    },
+  ];
+
+  const externalLinkGroup = [
+    {
+      name: "",
+      list: externalLinks,
+    },
+  ];
+  const mainMenus: Menu[] = [
+    {
+      text: t("m-account-settings"),
+      href: "/account",
+      icon: <MdAccountCircle />,
+      iconSize: "24px",
+    },
+    {
+      text: t("m-activities"),
+      href: "/oauth2-activities",
+      icon: <AiOutlineHistory />,
+    },
+    {
+      text: t("m-app-settings"),
+      href: "/settings",
+      icon: <IoSettingsOutline />,
+    },
+  ];
+
+  const groups = [
+    {
+      name: "",
+      list: mainMenus,
+    },
+  ];
 
   function handleResize() {
     if (
@@ -221,56 +220,59 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
 
   return (
     <Box
-      sx={{
-        background: `linear-gradient(#191b1f08, #191b1f08), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
-      }}
+      sx={
+        {
+          // background: `linear-gradient(#191b1f08, #191b1f08), linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default})`,
+        }
+      }
     >
       {/* Bottom bar in moblie */}
-      <Fade in={!mdSize && showDynamicNav}>
-        <Paper
-          sx={{
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            borderRadius: 0,
-            backgroundColor: theme.palette.background.paper,
-            height: appbarConfig.navbar.height,
-            borderStyle: "solid",
-            borderWidth: "1px 0 0 0",
-            borderColor: theme.palette.divider,
-            py: "32px",
-            px: "28px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            zIndex: 39,
-          }}
-        >
-          <Stack direction="row" alignItems="center" spacing="5px"></Stack>
-          <Stack direction="row" spacing="12px">
-            <Button
-              onClick={() => setOpenMenuModal(true)}
-              color="secondary"
-              variant="contained"
-              sx={{
-                p: "3px",
-                fontSize: 22,
-                minWidth: "32px",
-                width: "32px",
-                aspectRatio: "1/1",
-                borderRadius: "1000px",
-                color: "inherit",
-                display: {
-                  md: "none",
-                },
-              }}
-            >
-              <IoIosArrowUp />
-            </Button>
-          </Stack>
-        </Paper>
-      </Fade>
+      <Paper
+      elevation={1}
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          borderRadius: 0,
+          backgroundColor: theme.palette.background.paper,
+          height: appbarConfig.navbar.height,
+          borderStyle: "solid",
+          borderWidth: "1px 0 0 0",
+          borderColor: theme.palette.divider,
+          py: "32px",
+          px: "28px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          zIndex: 39,
+        }}
+      >
+        <Stack direction="row" alignItems="center" spacing="5px">
+          <Typography fontWeight={700} letterSpacing="-0.05em">KRAIKUB <Typography display="inline" fontWeight={400}>ID</Typography></Typography>
+        </Stack>
+        <Stack direction="row" spacing="12px">
+          <Button
+            onClick={() => setOpenMenuModal(true)}
+            color="secondary"
+            variant="contained"
+            sx={{
+              p: "3px",
+              fontSize: 22,
+              minWidth: "32px",
+              width: "32px",
+              aspectRatio: "1/1",
+              borderRadius: "1000px",
+              color: "inherit",
+              display: {
+                md: "none",
+              },
+            }}
+          >
+            <IoIosArrowUp />
+          </Button>
+        </Stack>
+      </Paper>
 
       <Box
         sx={{
@@ -281,7 +283,7 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           zIndex: 32,
           width: appbarConfig.sidebar.width,
           height: appbarConfig.sidebar.height,
-          pt: `${appbarConfig.navbar.number.height + 20}px`,
+          pt: `${appbarConfig.navbar.number.height + 40}px`,
           pb: "12px",
           display: {
             xs: "none",
@@ -290,36 +292,34 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
           },
           flexDirection: "column",
           justifyContent: "space-between",
-          borderStyle: "solid",
-          borderColor: theme.palette.divider,
-          borderWidth: "0 1px 0 0",
-          backgroundColor: theme.palette.background.paper,
         }}
       >
-        <Stack spacing={4} width="100%">
-          {groups.map((g, index) => {
-            return (
-              <Box key={`menu-group-${index}`}>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontSize: 10,
-                    fontWeight: 700,
-                  }}
-                >
-                  {g.name}
-                </Typography>
-                <Stack mt={1}>
-                  {g.list.map((menu, index) => {
-                    return (
-                      <Menu key={`menu-${menu.text}-${index}`} {...menu} />
-                    );
-                  })}
-                </Stack>
-              </Box>
-            );
-          })}
-        </Stack>
+        <Box>
+          <Stack spacing={4} width="100%">
+            {groups.map((g, index) => {
+              return (
+                <Box key={`menu-group-${index}`}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                    }}
+                  >
+                    {g.name}
+                  </Typography>
+                  <Stack mt={1}>
+                    {g.list.map((menu, index) => {
+                      return (
+                        <Menu key={`menu-${menu.text}-${index}`} {...menu} />
+                      );
+                    })}
+                  </Stack>
+                </Box>
+              );
+            })}
+          </Stack>
+        </Box>
         <Stack spacing={1} width="100%">
           {externalLinkGroup.map((g, index) => {
             return (
@@ -354,13 +354,13 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
               color="secondary"
               variant="contained"
               sx={{
-                borderRadius: 100,
+                borderRadius: "12px",
                 width: "100%",
                 gap: 1,
                 textTransform: "none",
               }}
             >
-              <FiLogOut /> Log out
+              <FiLogOut /> {t("logout")}
             </Button>
           </Box>
         </Stack>
@@ -369,7 +369,9 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
         sx={{
           pt: appbarConfig.navbar.height,
           minHeight: "100vh",
-          ml: {
+          width: "100%",
+          maxWidth: "1300px",
+          pl: {
             xs: 0,
             sm: 0,
             md: appbarConfig.sidebar.width,
@@ -433,32 +435,32 @@ export const AppBar: FC<AppBarProps> = ({ children }) => {
             <IoIosArrowDown />
           </Button>
         </Box>
-          <Stack>
-            <Stack spacing={4}>
-              {groups.map((g, index) => {
-                return (
-                  <Box key={`menu-group-${index}`}>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontSize: 12,
-                        fontWeight: 500,
-                      }}
-                    >
-                      {g.name}
-                    </Typography>
-                    <Stack mt={1}>
-                      {g.list.map((menu, index) => {
-                        return (
-                          <Menu key={`menu-${menu.text}-${index}`} {...menu} />
-                        );
-                      })}
-                    </Stack>
-                  </Box>
-                );
-              })}
-            </Stack>
+        <Stack>
+          <Stack spacing={4}>
+            {groups.map((g, index) => {
+              return (
+                <Box key={`menu-group-${index}`}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: 12,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {g.name}
+                  </Typography>
+                  <Stack mt={1}>
+                    {g.list.map((menu, index) => {
+                      return (
+                        <Menu key={`menu-${menu.text}-${index}`} {...menu} />
+                      );
+                    })}
+                  </Stack>
+                </Box>
+              );
+            })}
           </Stack>
+        </Stack>
       </Drawer>
     </Box>
   );

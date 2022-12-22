@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!uid) {
     return {
       props: {
-        ...(await serverSideTranslations(context.locale || "en", ["account"])),
+        ...(await serverSideTranslations(context.req.cookies.LANG || "en", ["account", "appbar", "common"])),
         u: null,
       },
     };
@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   ]);
   return {
     props: {
-      ...(await serverSideTranslations(context.locale || "en", ["account"])),
+      ...(await serverSideTranslations(context.req.cookies.LANG || "th", ["account", "appbar", "common"])),
       u: u.length ? serialize(u[0]) : null,
     },
   };

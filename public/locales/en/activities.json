@@ -1,0 +1,9 @@
+{
+  "page-header": "Sign in activities",
+  "section-device-header": "Devices",
+  "section-device-description": "Latest device types that we detected from your interactions.",
+  "section-device-each-device-label-1": "Last sign in",
+  "section-device-each-device-ip-look-up": "See where this device was signed in from.",
+  "section-apps-header": "Apps and sessions",
+  "section-apps-description": "A list of your active sessions on Kraikub."
+}

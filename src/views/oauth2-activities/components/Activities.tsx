@@ -12,6 +12,7 @@ import {
   Avatar,
 } from "@mui/material";
 import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IoIosArrowDown } from "react-icons/io";
 import { PaperSection } from "../../../layouts/ui/section/PaperSection";
 
@@ -25,7 +26,6 @@ interface KeyValueProps {
 }
 
 const KeyValue: FC<KeyValueProps> = (props) => {
-  const theme = useTheme();
   return (
     <Box>
       <Typography variant="body2" fontSize={12}>
@@ -41,6 +41,7 @@ const KeyValue: FC<KeyValueProps> = (props) => {
 export const Activities: FC<ActivitiesProps> = ({ accesses }) => {
   const theme = useTheme();
   const [whichActive, setWhichActive] = useState<number>();
+  const { t } = useTranslation("activities");
 
   const handleChange =
     (which: number) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -48,9 +49,9 @@ export const Activities: FC<ActivitiesProps> = ({ accesses }) => {
     };
   return (
     <Box my={2}>
-      <Typography variant="h6">Apps and sessions</Typography>
+      <Typography variant="h6">{t("section-apps-header")}</Typography>
       <Typography variant="body2" mt={1}>
-        A list of your active sessions on Kraikub.
+        {t("section-apps-description")}
       </Typography>
       <Container maxWidth="sm">
         <PaperSection

@@ -8,6 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { IconType } from "react-icons";
 import { AiFillAppstore } from "react-icons/ai";
 import { IoPhonePortraitOutline, IoLaptopOutline } from "react-icons/io5";
@@ -72,11 +73,12 @@ const categorize = (logs: ReducedLog[]) => {
 export const Devices: FC<DevicesProps> = ({ logs }) => {
   const theme = useTheme();
   const catMap = categorize(logs);
+  const { t } = useTranslation("activities")
   return (
     <Box my={2}>
-      <Typography variant="h6">Devices</Typography>
+      <Typography variant="h6">{t("section-device-header")}</Typography>
       <Typography variant="body2" mt={1}>
-        Latest device types that we detected from your interactions.
+      {t("section-device-description")}
       </Typography>
       <Container
         maxWidth="sm"
@@ -112,7 +114,7 @@ export const Devices: FC<DevicesProps> = ({ logs }) => {
                       {k.replaceAll(`"`, "")}
                     </Typography>
                     <Typography variant="body2" fontSize={12}>
-                      Last sign in{" "}
+                      {t("section-device-each-device-label-1")}{" "}
                       <strong>
                         {new Date(catMap[k].timestamp).toString()}
                       </strong>
@@ -124,7 +126,7 @@ export const Devices: FC<DevicesProps> = ({ logs }) => {
                         color: theme.palette.info.main,
                       }}
                     >
-                      See where this device was signed in from.
+                      {t("section-device-each-device-ip-look-up")}
                     </Link>
                     <Box sx={{
                       my: 2,

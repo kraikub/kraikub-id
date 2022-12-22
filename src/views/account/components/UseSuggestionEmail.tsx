@@ -24,7 +24,8 @@ export const UseSuggestionEmail: FC<UseSuggestionEmailProps> = ({
 
   return (
     <Stack spacing={2}>
-      <Input inputProps={{ placeholder: t("common:Email") || "" }} />
+      <TextField color="info" size="small"  label={t("common:Email")}/>
+      {/* <Input inputProps={{ placeholder: t("common.Email") || "" }} /> */}
       <Typography variant="body2" fontSize={12} fontWeight={500}>
         {t("UseSuggestionEmail.email-description")}
       </Typography>

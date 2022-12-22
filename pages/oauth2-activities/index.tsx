@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { UserModel } from "../../data/models/user";
 import { PageAuthMiddleware } from "../../middlewares/auth.middleware";
 import { serializeEach } from "../../utils/json";
@@ -114,6 +115,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
+      ...(await serverSideTranslations(context.req.cookies.LANG || "th", ["activities", "appbar", "common"])),
       accesses: serializeEach(res[0].accesses),
       logs: serializeEach(res[0].logs),
     },

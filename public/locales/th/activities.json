@@ -1,0 +1,9 @@
+{
+  "page-header": "กิจกรรมการเข้าสู่ระบบ",
+  "section-device-header": "อุปกรณ์",
+  "section-device-description": "ประเภทอุปกรณ์ล่าสุดที่เราตรวจพบจากการใช้งานของคุณ",
+  "section-device-each-device-label-1": "ล่าสุดเมื่อ",
+  "section-device-each-device-ip-look-up": "ดูว่าอุปกรณ์นี้ลงชื่อเข้าใช้จากที่ใด",
+  "section-apps-header": "แอปและเซสชัน",
+  "section-apps-description": "รายการเซสชันที่ใช้งานอยู่ของคุณบน Kraikub"
+}
